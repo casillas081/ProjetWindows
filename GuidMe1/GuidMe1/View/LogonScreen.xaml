@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="GuidMe1.View.LogonScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuidMe1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="MainGrid">
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="../Images/PhotoBackground.png" AlignmentX="Center"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+
+        <StackPanel x:Name="MainStack" Grid.Row="1" Margin="0,158,0,-158">
+            <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
+
+            <TextBox Text="Pseudo" TextAlignment="Center" Name="UserName" BorderBrush="LightGray"/>
+
+            <TextBox Text="Mot de passe" TextAlignment="Center" Name="Password" BorderBrush="LightGray"/>
+
+            <Button Content="Login" Background="LightGray" HorizontalAlignment="Center" Name="Login" Command="{Binding GoToInscriptionScreenCommand}"/>
+            <HyperlinkButton Content="Inscription" Name="Inscription" HorizontalAlignment="Center" Click="Inscription_Click"/>
+        </StackPanel>
+        
+    </Grid>
+</Page>
