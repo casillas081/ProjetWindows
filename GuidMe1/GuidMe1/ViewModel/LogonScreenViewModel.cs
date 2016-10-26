@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using GuidMe1.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace GuidMe1.ViewModel
     {
         private INavigationService _navigationService;
 
-        public LogonScreenViewModel(INavigationService navigationService)
+        public LogonScreenViewModel(INavigationService navigationService = null)
         {
             _navigationService = navigationService;
         }
@@ -25,10 +26,8 @@ namespace GuidMe1.ViewModel
         public ICommand GoToInscriptionScreenCommand
         {
             get {
-                if(_goToInscriptionScreenCommand == null)
-                {
-                    _goToInscriptionScreenCommand = new RelayCommand( () => GoToInscriptionScreen());
-                }
+                _goToInscriptionScreenCommand = new RelayCommand( () => GoToInscriptionScreen());
+                
                 return _goToInscriptionScreenCommand;
             }
         }
