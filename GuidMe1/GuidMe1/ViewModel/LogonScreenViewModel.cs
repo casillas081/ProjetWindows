@@ -16,26 +16,26 @@ namespace GuidMe1.ViewModel
     {
         private INavigationService _navigationService;
 
-        public LogonScreenViewModel(INavigationService navigationService = null)
+        public LogonScreenViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
 
-        private ICommand _goToInscriptionScreenCommand;
+        //private ICommand _goToInscriptionScreenCommand;
 
-        public ICommand GoToInscriptionScreenCommand
-        {
-            get {
-                _goToInscriptionScreenCommand = new RelayCommand( () => GoToInscriptionScreen());
+        //public ICommand GoToInscriptionScreenCommand
+        //{
+        //    get {
+        //        _goToInscriptionScreenCommand = new RelayCommand( () => GoToInscriptionScreen());
                 
-                return _goToInscriptionScreenCommand;
-            }
-        }
+        //        return _goToInscriptionScreenCommand;
+        //    }
+        //}
 
-        private void GoToInscriptionScreen()
-        {
-            _navigationService.NavigateTo("InscriptionScreen");
-        }
+        //private void GoToInscriptionScreen()
+        //{
+        //    _navigationService.NavigateTo("InscriptionScreen");
+        //}
 
     }
 }
