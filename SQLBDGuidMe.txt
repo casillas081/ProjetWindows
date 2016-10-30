@@ -1,0 +1,12 @@
+CREATE table Person{
+	Pseudo varchar(20) not null,
+	FirstName varchar(30) not null,
+	LastName varchar(30) not null,
+	Sex char not null,
+	Password varchar(128) not null,
+	Nationnality varchar(10) not null,
+	TypeRole boolean,
+	
+	
+	
+} 

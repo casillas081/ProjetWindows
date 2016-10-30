@@ -25,7 +25,11 @@ namespace GuidMe1.View
         public LogonScreen()
         {
             this.InitializeComponent();
-        }       
+        }
 
+        private void Inscription_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(InscriptionScreen),"je passe en inscription");
+        }
     }
 }

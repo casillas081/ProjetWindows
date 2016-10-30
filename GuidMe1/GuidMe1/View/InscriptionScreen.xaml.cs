@@ -27,5 +27,10 @@ namespace GuidMe1.View
         {
             this.InitializeComponent();
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            paramTextBlock.Text = e.Parameter.ToString();
+        }
     }
 }

@@ -9,33 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml;
 
 namespace GuidMe1.ViewModel
 {
     public class LogonScreenViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        private INavigationService _navigationService;
-
-        public LogonScreenViewModel(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-        }
-
-        //private ICommand _goToInscriptionScreenCommand;
-
-        //public ICommand GoToInscriptionScreenCommand
-        //{
-        //    get {
-        //        _goToInscriptionScreenCommand = new RelayCommand( () => GoToInscriptionScreen());
-                
-        //        return _goToInscriptionScreenCommand;
-        //    }
-        //}
-
-        //private void GoToInscriptionScreen()
-        //{
-        //    _navigationService.NavigateTo("InscriptionScreen");
-        //}
 
     }
 }
