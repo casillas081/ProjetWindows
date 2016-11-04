@@ -1,12 +1,106 @@
-CREATE table Person{
-	Pseudo varchar(20) not null,
-	FirstName varchar(30) not null,
-	LastName varchar(30) not null,
-	Sex char not null,
-	Password varchar(128) not null,
-	Nationnality varchar(10) not null,
-	TypeRole boolean,
-	
-	
-	
-} 
+create table Avatar (
+     IdPicture varchar(6) not null,
+     Name varchar(30) not null,
+     UrlPicture varchar(200) not null,
+     constraint ID_Avatar_ID primary key (IdPicture));
+
+create table Language (
+     CodeLanguage varchar(6) not null,
+     Name char(1) not null,
+     constraint ID_Language_ID primary key (CodeLanguage));
+
+create table Match (
+     Gui_Pseudo varchar(20) not null,
+     Pseudo varchar(20) not null,
+     Date date not null,
+     NamePlace varchar(30) not null,
+	 
+     constraint ID_Match_ID primary key (Gui_Pseudo, Pseudo),
+	 constraint REF_Match_Perso_1_FK foreign key (Pseudo) references Person,
+	 constraint REF_Match_Perso foreign key (Gui_Pseudo) references Person
+	 );
+
+create table Person (
+     Pseudo varchar(20) not null,
+     FirstName varchar(30) not null,
+     LastName varchar(30) not null,
+     Sex char(1) not null,
+     Password varchar(128) not null,
+     Nationality varchar(10) not null,
+     TypeRole char not null,
+     Rank numeric(3,1) not null,
+     IdPicture varchar(6) not null,
+	 
+     constraint ID_Person_ID primary key (Pseudo),
+	 constraint ID_Person_CHK check(exists(select * from Speak
+										    where Speak.Pseudo = Pseudo)), 
+
+	 constraint ID_Person_CHK check(exists(select * from Translation_1
+										    where Translation_1.Pseudo = Pseudo)),
+
+	 constraint REF_Perso_Avata_FK foreign key (IdPicture) references Avatar
+	 );
+
+create table Place (
+     IdPlace varchar(10) not null,
+     NamePlace varchar(30) not null,
+     Adr_Street varchar(30) not null,
+     Adr_Number varchar(4) not null,
+     Adr_City varchar(30) not null,
+     Adr_ZipCode numeric(4) not null,
+     CoordLat numeric(6,3) not null,
+     CoordLong numeric(6,3) not null,
+	 
+     constraint ID_Place_ID primary key (IdPlace),
+	 constraint ID_Place_CHK check(exists(select * from Translation
+                                           where Translation.IdPlace = IdPlace))
+	 );
+
+create table Speak (
+     CodeLanguage varchar(6) not null,
+     Pseudo varchar(20) not null,
+	 
+     constraint ID_Speak_ID primary key (CodeLanguage, Pseudo)
+	 constraint EQU_Speak_Perso_FK foreign key (Pseudo) references Person,
+	 constraint REF_Speak_Langu foreign key (CodeLanguage) references Language
+	 );
+
+create table Translation (
+     CodeLanguage varchar(6) not null,
+     IdPlace varchar(10) not null,
+     TranslationNamePlace varchar(30) not null,
+	 
+     constraint ID_Translation_ID primary key (IdPlace, CodeLanguage),
+	 constraint EQU_Trans_Place
+     foreign key (IdPlace) references Place,
+	 constraint REF_Trans_Langu_1_FK foreign key (CodeLanguage) references Language	 
+	 );
+
+create table Translation_1 (
+     CodeLanguage varchar(6) not null,
+     Pseudo varchar(20) not null,
+     TranslationNationatity char(1) not null,
+	 
+     constraint ID_Translation_1_ID primary key (CodeLanguage, Pseudo),
+	 constraint EQU_Trans_Perso_FK
+     foreign key (Pseudo) references Person,
+	 constraint REF_Trans_Langu foreign key (CodeLanguage) references Language	 
+	 );
+
+create table Want_To_Guid (
+     Pseudo varchar(20) not null,
+     IdPlace varchar(10) not null,
+	 
+     constraint ID_Want_To_Guid_ID primary key (Pseudo, IdPlace),
+	 constraint REF_Want__Place_1_FK foreign key (IdPlace) references Place
+	 constraint REF_Want__Perso_1 foreign key (Pseudo)references Person
+	 );
+
+create table Want_To_Visit (
+     Pseudo varchar(20) not null,
+     IdPlace varchar(10) not null,
+	 
+     constraint ID_Want_To_Visit_ID primary key (IdPlace, Pseudo),
+	 constraint REF_Want__Place foreign key (IdPlace) references Place,
+	 constraint REF_Want__Perso_FK foreign key (Pseudo) references Person
+	 );
