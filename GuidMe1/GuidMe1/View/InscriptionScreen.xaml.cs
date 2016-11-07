@@ -30,7 +30,8 @@ namespace GuidMe1.View
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            paramTextBlock.Text = e.Parameter.ToString();
+            //paramTextBlock.Text = e.Parameter.ToString();
+            ((InscriptionScreenViewModel)DataContext).OnNavigatedTo(e);
         }
     }
 }

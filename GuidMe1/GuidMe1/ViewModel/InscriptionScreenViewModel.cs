@@ -10,5 +10,15 @@ namespace GuidMe1.ViewModel
 {
     public class InscriptionScreenViewModel
     {
+        private INavigationService _navigationService;
+
+        public InscriptionScreenViewModel(INavigationService navigationService=null)
+        {
+            _navigationService = navigationService;
+        }
+        public void OnNavigatedTo(NavigationEventArgs e)
+        {
+
+        }
     }
 }
