@@ -25,7 +25,7 @@
 
             <TextBox Text="Mot de passe" TextAlignment="Center" Name="Password" BorderBrush="LightGray" Margin="200,10,200,10"/>
 
-            <Button Content="Login" Background="LightGray" HorizontalAlignment="Center" Name="Login" />
+            <Button Content="Login" Background="LightGray" HorizontalAlignment="Center" Name="Login" Command="{Binding GoToRoleChoiceScreenCommand}"/>
             <HyperlinkButton Content="Inscription" Name="Inscription" HorizontalAlignment="Center" Command="{Binding GoToInscriptionScreenCommand}"/>
         </StackPanel>
         

@@ -9,7 +9,24 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=InscriptionScreen}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Inscription page"/>
-        <TextBlock x:Name="paramTextBlock" Text=""/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
+
+        <StackPanel x:Name="MainStack" Grid.Row="1" Margin="0,200,0,0">
+
+            <TextBox Text="Pseudo" TextAlignment="Center" Name="UserName" BorderBrush="LightGray" Margin="150,5,150,5"/>
+            <TextBox Text="Nom" TextAlignment="Center" Name="Name" BorderBrush="LightGray" Margin="150,5,150,5"/>
+            <TextBox Text="Prénom" TextAlignment="Center" Name="LastName" BorderBrush="LightGray" Margin="150,5,150,5"/>
+            <TextBox Text="Adresse mail" TextAlignment="Center" Name="AdrMail" BorderBrush="LightGray" Margin="150,5,150,5"/>
+            <TextBox Text="Mot de passe" TextAlignment="Center" Name="Password" BorderBrush="LightGray" Margin="150,5,150,5"/>
+           
+        </StackPanel>
+
+        <Button Grid.Row="2" Content="Login" Name="Inscrire" HorizontalAlignment="Center" />
     </Grid>
 </Page>

@@ -18,11 +18,13 @@ namespace GuidMe1.ViewModel
 
             SimpleIoc.Default.Register<LogonScreenViewModel>();
             SimpleIoc.Default.Register<InscriptionScreenViewModel>();
+            SimpleIoc.Default.Register<RoleChoiceScreenViewModel>();
 
             NavigationService navigationPages = new NavigationService();
             SimpleIoc.Default.Register<INavigationService>(() => navigationPages);
             navigationPages.Configure("LogonScreen", typeof(LogonScreen));
             navigationPages.Configure("InscriptionScreen", typeof(InscriptionScreen));
+            navigationPages.Configure("RoleChoiceScreen", typeof(RoleChoiceScreen));
 
         }
 
@@ -39,6 +41,14 @@ namespace GuidMe1.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<InscriptionScreenViewModel>();
+            }
+        }
+
+        public RoleChoiceScreenViewModel RoleChoiceScreen
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<RoleChoiceScreenViewModel>();
             }
         }
     }

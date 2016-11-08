@@ -28,6 +28,18 @@ namespace GuidMe1.ViewModel
                 }
         }
 
+        private ICommand _goToRoleChoiceScreenCommand;
+
+        public ICommand GoToRoleChoiceScreenCommand
+        {
+            get {
+                if (_goToRoleChoiceScreenCommand == null)
+                    _goToRoleChoiceScreenCommand = new RelayCommand(() => GoToRoleChoiceScreen());
+                return _goToRoleChoiceScreenCommand;
+            }
+        }
+            
+
         private INavigationService _navigationService;
 
         [PreferredConstructor]
@@ -39,6 +51,11 @@ namespace GuidMe1.ViewModel
         private void GoToInscriptionScreen()
         {
             _navigationService.NavigateTo("InscriptionScreen");
+        }
+
+        private void GoToRoleChoiceScreen()
+        {
+            _navigationService.NavigateTo("RoleChoiceScreen");
         }
 
 

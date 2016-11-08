@@ -95,18 +95,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\InscriptionScreenViewModel.cs" />
     <Compile Include="ViewModel\LogonScreenViewModel.cs" />
+    <Compile Include="ViewModel\RoleChoiceScreenViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\InscriptionScreen.xaml.cs">
       <DependentUpon>InscriptionScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LogonScreen.xaml.cs">
       <DependentUpon>LogonScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RoleChoiceScreen.xaml.cs">
+      <DependentUpon>RoleChoiceScreen.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -139,15 +140,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\InscriptionScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LogonScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RoleChoiceScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
