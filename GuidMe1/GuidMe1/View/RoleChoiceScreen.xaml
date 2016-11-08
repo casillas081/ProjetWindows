@@ -8,10 +8,10 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=RoleChoiceScreen}">
 
-    <Grid Background="#555658" Margin="50,10,50,50">
+    <Grid Background="#555658">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,14 +19,14 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="24" FontStretch="Normal" FontStyle="Italic" FontWeight="ExtraBlack">Quel est votre role?</TextBlock>
-        <Button Grid.Row="1" Grid.Column="0" Height="Auto" Width="Auto">
+        <Button Grid.Row="1" Grid.Column="0" Height="Auto" Width="Auto"  HorizontalAlignment="Center">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/Tourist_Button.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Height="Auto" Width="Auto">
+        <Button Grid.Row="1" Grid.Column="1" Height="Auto" Width="Auto" HorizontalAlignment="Center">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/Guide_Button.png"/>
