@@ -13,28 +13,30 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="24" FontStretch="Normal" FontStyle="Italic" FontWeight="ExtraBlack">Quel est votre role?</TextBlock>
-        <Button Grid.Row="1" Grid.Column="0" Height="Auto" Width="Auto"  HorizontalAlignment="Center">
+        <TextBlock Text="GuidME"  Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="24" FontStretch="Normal" FontStyle="Italic" FontWeight="ExtraBlack">Quel est votre role?</TextBlock>
+        <Button Grid.Row="2" Grid.Column="0" Height="Auto" Width="Auto"  HorizontalAlignment="Center">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/Tourist_Button.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Grid.Row="1" Grid.Column="1" Height="Auto" Width="Auto" HorizontalAlignment="Center">
+        <Button Grid.Row="2" Grid.Column="1" Height="Auto" Width="Auto" HorizontalAlignment="Center" Command="{Binding GoToGuidScreenCommand}">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/Guide_Button.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <TextBlock  Name="GuideLabel" Grid.Row="2" Grid.Column="0" TextAlignment="Center" FontSize="24" FontStretch="UltraExpanded" FontStyle="Italic" FontWeight="ExtraBlack">Visiteur</TextBlock>
-        <TextBlock  Name="TouristLabel" Grid.Row="2" Grid.Column="1" TextAlignment="Center" FontSize="24" FontStretch="UltraExpanded" FontStyle="Italic" FontWeight="ExtraBlack">Guide</TextBlock>
+        <TextBlock  Name="GuideLabel" Grid.Row="3" Grid.Column="0" TextAlignment="Center" FontSize="24" FontStretch="UltraExpanded" FontStyle="Italic" FontWeight="ExtraBlack">Visiteur</TextBlock>
+        <TextBlock  Name="TouristLabel" Grid.Row="3" Grid.Column="1" TextAlignment="Center" FontSize="24" FontStretch="UltraExpanded" FontStyle="Italic" FontWeight="ExtraBlack">Guide</TextBlock>
 
     </Grid>
 </Page>

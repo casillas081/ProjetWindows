@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="GuidMe1.View.GuidScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuidMe1.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=GuidScreen}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
+        <TextBlock Text="Disponibilité" HorizontalAlignment="Center" Grid.Row="1"/>
+        <TimePicker x:Name="arrivalTimePicker" ClockIdentifier="24HourClock" Grid.Row="2" HorizontalAlignment="Center"/>
+        <Button Content="Disponible" Background="LightGray" HorizontalAlignment="Center" Name="Disponible" Grid.Row="3" />
+    </Grid>
+</Page>

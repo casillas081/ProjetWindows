@@ -20,16 +20,12 @@ namespace GuidMe1.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LogonScreen : Page
+    public sealed partial class GuidScreen : Page
     {
-        public LogonScreen()
+        public GuidScreen()
         {
+            TimePicker arrivalTimePicker = new TimePicker();
             this.InitializeComponent();
         }
-
-        //private void Inscription_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Frame.Navigate(typeof(InscriptionScreen),"je passe en inscription");
-        //}
     }
 }

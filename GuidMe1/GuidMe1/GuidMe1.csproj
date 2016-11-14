@@ -96,10 +96,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\GuidScreenViewModel.cs" />
     <Compile Include="ViewModel\InscriptionScreenViewModel.cs" />
     <Compile Include="ViewModel\LogonScreenViewModel.cs" />
     <Compile Include="ViewModel\RoleChoiceScreenViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\GuidScreen.xaml.cs">
+      <DependentUpon>GuidScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\InscriptionScreen.xaml.cs">
       <DependentUpon>InscriptionScreen.xaml</DependentUpon>
     </Compile>
@@ -140,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\GuidScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\InscriptionScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
