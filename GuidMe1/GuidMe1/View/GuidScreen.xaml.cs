@@ -24,8 +24,25 @@ namespace GuidMe1.View
     {
         public GuidScreen()
         {
+
             TimePicker arrivalTimePicker = new TimePicker();
             this.InitializeComponent();
+
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
