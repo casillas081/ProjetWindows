@@ -10,7 +10,7 @@
 
     <Grid x:Name="MainGrid">
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="../Images/PhotoBackground.png" AlignmentX="Center"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="../Images/BackGround.png" AlignmentX="Center"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

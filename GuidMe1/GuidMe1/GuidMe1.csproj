@@ -99,6 +99,7 @@
     <Compile Include="ViewModel\GuidScreenViewModel.cs" />
     <Compile Include="ViewModel\InscriptionScreenViewModel.cs" />
     <Compile Include="ViewModel\LogonScreenViewModel.cs" />
+    <Compile Include="ViewModel\ParameterGuidScreenViewModel.cs" />
     <Compile Include="ViewModel\RoleChoiceScreenViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\GuidScreen.xaml.cs">
@@ -109,6 +110,9 @@
     </Compile>
     <Compile Include="View\LogonScreen.xaml.cs">
       <DependentUpon>LogonScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ParameterGuidScreen.xaml.cs">
+      <DependentUpon>ParameterGuidScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RoleChoiceScreen.xaml.cs">
       <DependentUpon>RoleChoiceScreen.xaml</DependentUpon>
@@ -121,10 +125,8 @@
     <None Include="GuidMe1_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\BackGround.png" />
     <Content Include="Images\Guide_Button.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\PhotoBackground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Tourist_Button.png">
@@ -153,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LogonScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ParameterGuidScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
