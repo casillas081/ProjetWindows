@@ -37,13 +37,13 @@
         <TextBlock Text="Ajouter un lieu à mes " HorizontalAlignment="Center" Foreground="Black" Grid.Row="1"/>
         <ComboBox Grid.Row="2" HorizontalAlignment="Center">
             <ComboBoxItem>
-                
+                <TextBlock Text="Henallux-IESN" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </ComboBoxItem>
         </ComboBox>
         <TextBlock Text="Lieu sélectionnés :" Grid.Row="3" HorizontalAlignment="Center" Foreground="Black"/>
         <ListView Grid.Row="4" HorizontalAlignment="Center">
             <ListViewItem>
-                
+                <TextBlock Text="Henallux-IESN" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </ListViewItem>
         </ListView>
     </Grid>

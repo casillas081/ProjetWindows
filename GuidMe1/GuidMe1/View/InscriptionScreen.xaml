@@ -17,7 +17,7 @@
 
         <TextBlock Text="Formulaire d'inscription" HorizontalAlignment="Center" Foreground="Black" FontSize="28"/>
 
-        <StackPanel x:Name="MainStack" Grid.Row="1" Margin="0,100,0,0">
+        <StackPanel x:Name="MainStack" Grid.Row="1" Margin="200,100,200,50">
             <TextBox Text="Nom" TextAlignment="Center" Name="Name" BorderBrush="LightGray" />
             <TextBox Text="Prénom" TextAlignment="Center" Name="LastName" BorderBrush="LightGray"/>
             <StackPanel>
@@ -38,9 +38,25 @@
             <TextBox Text="Adresse mail" TextAlignment="Center" Name="AdrMail" BorderBrush="LightGray"/>
             <TextBox Text="Pseudo" TextAlignment="Center" Name="UserName" BorderBrush="LightGray"/>
             <TextBox Text="Mot de passe" TextAlignment="Center" Name="Password" BorderBrush="LightGray"/>
-           
+            <TextBox Text="Vérification Mot de passe" TextAlignment="Center" Name="PasswordConfirm" BorderBrush="LightGray"/>
+            <StackPanel>
+                <TextBlock Text="Lieu à visiter :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox HorizontalAlignment="Center">
+                    <ComboBoxItem>
+                        <TextBlock Text="Citadelle" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Lieux connus :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox HorizontalAlignment="Center">
+                    <ComboBoxItem>
+                        <TextBlock Text="Henallux-IESN" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
 
-        <Button Grid.Row="2" Content="Login" Name="Inscrire" HorizontalAlignment="Center" Command="{Binding GoToRoleChoiceScreenCommand}"/>
+        <Button Grid.Row="2" Content="Valider" Name="Inscrire" HorizontalAlignment="Center" Command="{Binding GoToRoleChoiceScreenCommand}"/>
     </Grid>
 </Page>
