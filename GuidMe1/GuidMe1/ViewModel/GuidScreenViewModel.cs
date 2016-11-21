@@ -37,6 +37,23 @@ namespace GuidMe1.ViewModel
             _navigationService.NavigateTo("ParameterGuidScreen");
         }
 
+        private ICommand _goToRoleChoiceScreenCommand;
+
+        public ICommand GoToRoleChoiceScreenCommand
+        {
+            get
+            {
+                if (_goToRoleChoiceScreenCommand == null)
+                    _goToRoleChoiceScreenCommand = new RelayCommand(() => GoToRoleChoiceScreen());
+                return _goToRoleChoiceScreenCommand;
+            }
+        }
+
+        private void GoToRoleChoiceScreen()
+        {
+            _navigationService.NavigateTo("RoleChoiceScreen");
+        }
+
         public void OnNavigatedTo(NavigationEventArgs e)
         {
 

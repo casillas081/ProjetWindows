@@ -23,8 +23,8 @@
                     RelativePanel.AlignLeftWithPanel="True"
                     FontFamily="{StaticResource SymbolThemeFontFamily}"
                     Content="&#xE0C4;"
-                    FontSize="30"
-                    Click="BackButton_Click"/>
+                    FontSize="36"
+                    Command="{Binding GoToGuidScreenCommand}"/>
             <TextBlock Name="TitleTextBlock"
                        RelativePanel.RightOf="BackButton"
                        FontSize="28"

@@ -33,5 +33,12 @@ namespace GuidMe1.View
             //paramTextBlock.Text = e.Parameter.ToString();
             ((InscriptionScreenViewModel)DataContext).OnNavigatedTo(e);
         }
+
+        private void BGRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
 }

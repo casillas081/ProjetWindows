@@ -15,32 +15,32 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <RelativePanel Grid.Row="0">
-            <Button Name="BackButton"
-                    RelativePanel.AlignLeftWithPanel="True"
-                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    Content="&#xE0C4;"
-                    FontSize="30"/>
-            <TextBlock Name="TitleTextBlock"
-                       RelativePanel.RightOf="BackButton"
-                       FontSize="28"
-                       FontWeight="Bold"
-                       Margin="20,5,0,0"/>
+        <TextBlock Text="Formulaire d'inscription" HorizontalAlignment="Center" Foreground="Black" FontSize="28"/>
 
-        </RelativePanel>
-
-        <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
-
-        <StackPanel x:Name="MainStack" Grid.Row="1" Margin="0,200,0,0">
-
-            <TextBox Text="Pseudo" TextAlignment="Center" Name="UserName" BorderBrush="LightGray" Margin="150,5,150,5"/>
-            <TextBox Text="Nom" TextAlignment="Center" Name="Name" BorderBrush="LightGray" Margin="150,5,150,5"/>
-            <TextBox Text="Prénom" TextAlignment="Center" Name="LastName" BorderBrush="LightGray" Margin="150,5,150,5"/>
-            <TextBox Text="Adresse mail" TextAlignment="Center" Name="AdrMail" BorderBrush="LightGray" Margin="150,5,150,5"/>
-            <TextBox Text="Mot de passe" TextAlignment="Center" Name="Password" BorderBrush="LightGray" Margin="150,5,150,5"/>
+        <StackPanel x:Name="MainStack" Grid.Row="1" Margin="0,100,0,0">
+            <TextBox Text="Nom" TextAlignment="Center" Name="Name" BorderBrush="LightGray" />
+            <TextBox Text="Prénom" TextAlignment="Center" Name="LastName" BorderBrush="LightGray"/>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Sexe :" VerticalAlignment="Center"/>
+                    <RadioButton Content="Homme" Tag="Blue" Checked="BGRadioButton_Checked" IsChecked="True"/>
+                    <RadioButton Content="Femme" Tag="White" Checked="BGRadioButton_Checked" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Nationnalité :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox HorizontalAlignment="Center">
+                    <ComboBoxItem>
+                        <TextBlock Text="Nationnalité" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <TextBox Text="Adresse mail" TextAlignment="Center" Name="AdrMail" BorderBrush="LightGray"/>
+            <TextBox Text="Pseudo" TextAlignment="Center" Name="UserName" BorderBrush="LightGray"/>
+            <TextBox Text="Mot de passe" TextAlignment="Center" Name="Password" BorderBrush="LightGray"/>
            
         </StackPanel>
 
-        <Button Grid.Row="2" Content="Login" Name="Inscrire" HorizontalAlignment="Center" />
+        <Button Grid.Row="2" Content="Login" Name="Inscrire" HorizontalAlignment="Center" Command="{Binding GoToRoleChoiceScreenCommand}"/>
     </Grid>
 </Page>

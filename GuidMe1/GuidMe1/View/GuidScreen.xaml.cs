@@ -1,8 +1,10 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -35,15 +37,11 @@ namespace GuidMe1.View
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
+
 
     }
 }

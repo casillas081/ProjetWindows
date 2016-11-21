@@ -27,9 +27,5 @@ namespace GuidMe1.View
             this.InitializeComponent();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
