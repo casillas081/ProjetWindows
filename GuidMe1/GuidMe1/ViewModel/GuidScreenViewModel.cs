@@ -54,9 +54,6 @@ namespace GuidMe1.ViewModel
             _navigationService.NavigateTo("RoleChoiceScreen");
         }
 
-        public void OnNavigatedTo(NavigationEventArgs e)
-        {
-
-        }
+ 
     }
 }

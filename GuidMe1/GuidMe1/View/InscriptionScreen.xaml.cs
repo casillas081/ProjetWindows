@@ -28,17 +28,6 @@ namespace GuidMe1.View
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            //paramTextBlock.Text = e.Parameter.ToString();
-            ((InscriptionScreenViewModel)DataContext).OnNavigatedTo(e);
-        }
-
-        private void BGRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
     }
 }

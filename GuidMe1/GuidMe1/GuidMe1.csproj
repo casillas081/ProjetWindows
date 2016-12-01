@@ -95,18 +95,36 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AllPersons.cs" />
+    <Compile Include="Model\DataService.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\EvaluationMatchedGuideViewModel.cs" />
+    <Compile Include="ViewModel\GuideProfileViewModel.cs" />
     <Compile Include="ViewModel\GuidScreenViewModel.cs" />
     <Compile Include="ViewModel\InscriptionScreenViewModel.cs" />
+    <Compile Include="ViewModel\ListGuideToEvaluateScreenViewModel.cs" />
     <Compile Include="ViewModel\LogonScreenViewModel.cs" />
     <Compile Include="ViewModel\ParameterGuidScreenViewModel.cs" />
+    <Compile Include="ViewModel\ParameterVisitorScreenViewModel.cs" />
     <Compile Include="ViewModel\RoleChoiceScreenViewModel.cs" />
+    <Compile Include="ViewModel\SelectedGuideScreenViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\VisitorScreenViewModel.cs" />
+    <Compile Include="View\EvaluationMatchedGuide.xaml.cs">
+      <DependentUpon>EvaluationMatchedGuide.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GuideProfile.xaml.cs">
+      <DependentUpon>GuideProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GuidScreen.xaml.cs">
       <DependentUpon>GuidScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\InscriptionScreen.xaml.cs">
       <DependentUpon>InscriptionScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListGuideToEvaluateScreen.xaml.cs">
+      <DependentUpon>ListGuideToEvaluateScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LogonScreen.xaml.cs">
       <DependentUpon>LogonScreen.xaml</DependentUpon>
@@ -114,8 +132,17 @@
     <Compile Include="View\ParameterGuidScreen.xaml.cs">
       <DependentUpon>ParameterGuidScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ParameterVisitorScreen.xaml.cs">
+      <DependentUpon>ParameterVisitorScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RoleChoiceScreen.xaml.cs">
       <DependentUpon>RoleChoiceScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelectedGuideScreen.xaml.cs">
+      <DependentUpon>SelectedGuideScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VisitorScreen.xaml.cs">
+      <DependentUpon>VisitorScreen.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -125,8 +152,26 @@
     <None Include="GuidMe1_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\Avatar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\BackGround.png" />
     <Content Include="Images\Guide_Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\message-2-xxl.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\profil.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Star_unvalid.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Star_Valid.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Tourist_Button.png">
@@ -146,11 +191,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\EvaluationMatchedGuide.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GuideProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\GuidScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\InscriptionScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListGuideToEvaluateScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,14 +219,24 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ParameterVisitorScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RoleChoiceScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SelectedGuideScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VisitorScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

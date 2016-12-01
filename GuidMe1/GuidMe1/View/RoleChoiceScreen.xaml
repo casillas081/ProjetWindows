@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="GuidME"  Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="24" FontStretch="Normal" FontStyle="Italic" FontWeight="ExtraBlack">Quel est votre role?</TextBlock>
-        <Button Grid.Row="2" Grid.Column="0" Height="Auto" Width="Auto"  HorizontalAlignment="Center">
+        <Button Grid.Row="2" Grid.Column="0" Height="Auto" Width="Auto"  HorizontalAlignment="Center" Command="{Binding GoToVisitorScreenCommand}">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="/Images/Tourist_Button.png"/>

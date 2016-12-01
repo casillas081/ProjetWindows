@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="GuidMe1.View.EvaluationMatchedGuide"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuidMe1.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=EvaluationMatchedGuideScreen}">
+
+    <Grid Background="#555658">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0">
+            <Button Name="BackButton"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Content="&#xE0C4;"
+                    FontSize="36"
+                    Command="{Binding GoToRoleChoiceScreenCommand}"/>
+            <TextBlock Name="TitleTextBlock"
+                       RelativePanel.RightOf="BackButton"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Margin="20,5,0,0"/>
+
+        </RelativePanel>
+        <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
+        <TextBlock Text="Evaluation" HorizontalAlignment="Center" Margin="0,20,0,20" Foreground="Black" FontSize="20" Grid.Row="1"/>
+
+        <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Row="0"  Grid.Column="0" HorizontalAlignment="Center" Margin="25,0,0,0">
+                <TextBlock Text="Guide"/>
+                <TextBlock Text="Lieu visité"/>
+                <TextBlock Text="Date"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="0"  Grid.Column="1" HorizontalAlignment="Center" Margin="25,0,0,0">
+                <TextBlock Text="BonJean"/>
+                <TextBlock Text="Citadelle de Namur"/>
+                <TextBlock Text="19/11/2016"/>
+            </StackPanel>
+        </Grid>
+        <TextBlock Text="Comment s'est passé votre visite?"  Margin="0,20,0,20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" Grid.Row="3"/>
+        <Slider x:Name="volumeSlider" Grid.Row="4" Header="EvaluationScore" Width="200" Margin="0,20,0,20"/>
+        <Button Content="Valider" Grid.Row="5" Margin="0,20,0,20" Background="LightGray" HorizontalAlignment="Center" Name="Valider"/>
+    </Grid>
+</Page>

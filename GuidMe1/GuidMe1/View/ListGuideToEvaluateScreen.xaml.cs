@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuidMe1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,12 +21,18 @@ namespace GuidMe1.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LogonScreen : Page
+    public sealed partial class ListGuideToEvaluateScreen : Page
     {
-        public LogonScreen()
+        public ListGuideToEvaluateScreenViewModel ListGuideToEvaluate { get; set; }
+        public ListGuideToEvaluateScreen()
         {
             this.InitializeComponent();
+            ListGuideToEvaluate = new ListGuideToEvaluateScreenViewModel();
         }
 
+        private void GoToEvaluationMatchedGuide(object sender, ItemClickEventArgs e)
+        {
+            this.Frame.Navigate(typeof(EvaluationMatchedGuide));
+        }
     }
 }

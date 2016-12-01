@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="GuidMe1.View.GuideProfile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuidMe1.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" DataContext="{Binding Source={StaticResource Locator}, Path=GuideProfile}">
+
+
+    <Grid Background="#555658">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0">
+            <Button Name="BackButton"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Content="&#xE0C4;"
+                    FontSize="36"
+                    Command="{Binding GoToRoleChoiceScreenCommand}"/>
+            <TextBlock Name="TitleTextBlock"
+                       RelativePanel.RightOf="BackButton"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Margin="20,5,0,0"/>
+
+        </RelativePanel>
+        <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
+        <TextBlock Text="Profil guide" HorizontalAlignment="Center" Grid.Row="1"/>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0" Grid.ColumnSpan="2" Source="/Images/Avatar.png" Height="150" Width="150" HorizontalAlignment="Center"></Image>
+
+            <StackPanel Orientation="Vertical" Grid.Row="1"  Grid.Column="0" HorizontalAlignment="Center">
+                <TextBlock Text="Pseudo"/>
+                <TextBlock Text="Nom"/>
+                <TextBlock Text="Prenom"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock Text="Pseudo"/>
+                <TextBlock Text="Nom"/>
+                <TextBlock Text="Prenom"/>
+            </StackPanel>
+
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Rank" HorizontalAlignment="Center" Foreground="Black"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                    <Image Source="/Images/Star_valid.png" Height="50" Width="50"></Image>
+                    <Image Source="/Images/Star_valid.png" Height="50" Width="50"></Image>
+                    <Image Source="/Images/Star_valid.png" Height="50" Width="50"></Image>
+                    <Image Source="/Images/Star_unvalid.png" Height="50" Width="50"></Image>
+                    <Image Source="/Images/Star_unvalid.png" Height="50" Width="50"></Image>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="Lieux connus"/>
+            <ListView Grid.Row="1" HorizontalAlignment="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="Lieux no 1" HorizontalAlignment="Center"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

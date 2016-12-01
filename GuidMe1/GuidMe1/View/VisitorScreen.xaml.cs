@@ -20,12 +20,30 @@ namespace GuidMe1.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LogonScreen : Page
+    public sealed partial class VisitorScreen : Page
     {
-        public LogonScreen()
+        public VisitorScreen()
         {
             this.InitializeComponent();
         }
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
 
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void GoToSelectedGuideScreen(object sender, ItemClickEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SelectedGuideScreen));
+        }
     }
 }

@@ -27,6 +27,18 @@ namespace GuidMe1.ViewModel
             }
         }
 
+        private ICommand _goToVisitorScreenCommand;
+
+        public ICommand GoToVisitorScreenCommand
+        {
+            get
+            {
+                if (_goToVisitorScreenCommand == null)
+                    _goToVisitorScreenCommand = new RelayCommand(() => GoToVisitorScreen());
+                return _goToVisitorScreenCommand;
+            }
+        }
+
         private INavigationService _navigationService;
 
         [PreferredConstructor]
@@ -35,14 +47,14 @@ namespace GuidMe1.ViewModel
             _navigationService = navigationService;
         }       
 
-        public void OnNavigatedTo(NavigationEventArgs e)
-        {
-
-        }
-
         private void GoToGuidScreen()
         {
             _navigationService.NavigateTo("GuidScreen");
+        }
+
+        private void GoToVisitorScreen()
+        {
+            _navigationService.NavigateTo("VisitorScreen");
         }
     }
 }

@@ -15,29 +15,43 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Formulaire d'inscription" HorizontalAlignment="Center" Foreground="Black" FontSize="28"/>
+        <RelativePanel Grid.Row="0">
+            <Button Name="BackButton"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Content="&#xE0C4;"
+                    FontSize="36"
+                    Command="{Binding GoToLogonScreenCommand}"/>
+            <TextBlock Name="TitleTextBlock"
+                       RelativePanel.RightOf="BackButton"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Margin="20,5,0,0"/>
+
+        </RelativePanel>
+
+        <TextBlock Grid.Row="0" Text="Formulaire d'inscription" HorizontalAlignment="Center" Foreground="Black" FontSize="28"/>
 
         <StackPanel x:Name="MainStack" Grid.Row="1" Margin="200,100,200,50">
-            <TextBox Text="Nom" TextAlignment="Center" Name="Name" BorderBrush="LightGray" />
-            <TextBox Text="Prénom" TextAlignment="Center" Name="LastName" BorderBrush="LightGray"/>
+            <TextBox Text="{Binding FirstName}" TextAlignment="Center" Name="Name" BorderBrush="LightGray" />
+            <TextBox Text="{Binding LastName}" TextAlignment="Center" Name="LastName" BorderBrush="LightGray"/>
             <StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Sexe :" VerticalAlignment="Center"/>
-                    <RadioButton Content="Homme" Tag="Blue" Checked="BGRadioButton_Checked" IsChecked="True"/>
-                    <RadioButton Content="Femme" Tag="White" Checked="BGRadioButton_Checked" />
+                    <RadioButton x:Name="Male" Content="H" IsChecked="{Binding CheckButton}"/>
+                    <RadioButton x:Name="Female" Content="F" />
                 </StackPanel>
             </StackPanel>
             <StackPanel>
-                <TextBlock Text="Nationnalité :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="Nationalité :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox HorizontalAlignment="Center">
                     <ComboBoxItem>
-                        <TextBlock Text="Nationnalité" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Nationalité" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <TextBox Text="Adresse mail" TextAlignment="Center" Name="AdrMail" BorderBrush="LightGray"/>
-            <TextBox Text="Pseudo" TextAlignment="Center" Name="UserName" BorderBrush="LightGray"/>
-            <TextBox Text="Mot de passe" TextAlignment="Center" Name="Password" BorderBrush="LightGray"/>
+            <TextBox Text="{Binding Pseudo}" TextAlignment="Center" Name="UserName" BorderBrush="LightGray"/>
+            <TextBox Text="{Binding Password}" TextAlignment="Center" Name="Password" BorderBrush="LightGray"/>
             <TextBox Text="Vérification Mot de passe" TextAlignment="Center" Name="PasswordConfirm" BorderBrush="LightGray"/>
             <StackPanel>
                 <TextBlock Text="Lieu à visiter :" HorizontalAlignment="Center" VerticalAlignment="Center"/>

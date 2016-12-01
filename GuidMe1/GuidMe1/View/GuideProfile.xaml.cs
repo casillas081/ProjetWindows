@@ -20,12 +20,11 @@ namespace GuidMe1.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LogonScreen : Page
+    public sealed partial class GuideProfile : Page
     {
-        public LogonScreen()
+        public GuideProfile()
         {
             this.InitializeComponent();
         }
-
     }
 }

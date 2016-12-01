@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="GuidMe1.View.ParameterVisitorScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuidMe1.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=ParameterVisitorScreen}">
+
+    <Grid Background="#555658">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0">
+            <Button Name="BackButton"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Content="&#xE0C4;"
+                    FontSize="36"
+                    Command="{Binding GoToRoleChoiceScreenCommand}"/>
+            <TextBlock Name="TitleTextBlock"
+                       RelativePanel.RightOf="BackButton"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Margin="20,5,0,0"/>
+
+        </RelativePanel>
+        <TextBlock Text="Paramètres" HorizontalAlignment="Center" Foreground="Black" FontSize="40" Grid.Row="0"/>
+
+        <TextBlock Text="Ajouter ou supprimer des lieux souhaités" HorizontalAlignment="Center" Foreground="Black" Grid.Row="1"/>
+        <ComboBox Grid.Row="2" HorizontalAlignment="Center">
+            <ComboBoxItem>
+
+            </ComboBoxItem>
+        </ComboBox>
+        <TextBlock Text="Lieux souhaités :" Grid.Row="3" HorizontalAlignment="Center" Foreground="Black"/>
+        <ListView Grid.Row="4" HorizontalAlignment="Center">
+            <ListViewItem>
+
+            </ListViewItem>
+        </ListView>
+    </Grid>
+</Page>

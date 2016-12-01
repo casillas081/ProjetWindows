@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="GuidMe1.View.SelectedGuideScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuidMe1.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=SelectedGuideScreen}">
+
+    <Grid Background="#555658">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0">
+            <Button Name="BackButton"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Content="&#xE0C4;"
+                    FontSize="36"
+                    Command="{Binding GoToRoleChoiceScreenCommand}"/>
+            <TextBlock Name="TitleTextBlock"
+                       RelativePanel.RightOf="BackButton"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Margin="20,5,0,0"/>
+
+        </RelativePanel>
+        <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
+        <TextBlock Text="Guide choisi" HorizontalAlignment="Center" Grid.Row="1" FontSize="20"/>
+
+        <Grid Grid.Row="2" Margin="0,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0" Grid.ColumnSpan="2" Source="/Images/Avatar.png" Height="150" Width="150" HorizontalAlignment="Center"></Image>
+
+            <TextBlock Text="Pseudo" Grid.Row="1"  Grid.Column="0" HorizontalAlignment="Center"/>
+            <TextBlock Text="BonJean" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center"/>
+
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Rank" HorizontalAlignment="Center" Foreground="Black"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                    <Image Source="/Images/Star_valid.png"></Image>
+                    <Image Source="/Images/Star_valid.png"></Image>
+                    <Image Source="/Images/Star_valid.png"></Image>
+                    <Image Source="/Images/Star_unvalid.png"></Image>
+                    <Image Source="/Images/Star_unvalid.png"></Image>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3"  HorizontalAlignment="Center" Margin="0,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center"  Height="100" Width="100" Margin="25,0,25,0" Command="{Binding GoToGuidProfileCommand}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Images/profil.png"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  Height="100" Width="100" Margin="25,0,25,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Images/message-2-xxl.png"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBlock Text="Profil" Grid.Row="1"  Grid.Column="0" HorizontalAlignment="Center"/>
+            <TextBlock Text="Notifier" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Page>
