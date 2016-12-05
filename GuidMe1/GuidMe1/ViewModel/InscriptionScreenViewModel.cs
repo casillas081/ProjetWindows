@@ -67,6 +67,9 @@ namespace GuidMe1.ViewModel
             }
         }
 
+        public List<String> MyNationality { get; set; }
+
+
         private String _nationality;
 
         public String Nationality
@@ -76,6 +79,9 @@ namespace GuidMe1.ViewModel
                 RaisePropertyChanged("Nationality");
             }
         }
+
+        
+
 
         private List<String> _placeForVisit;
 
@@ -103,7 +109,25 @@ namespace GuidMe1.ViewModel
         [PreferredConstructor]
         public InscriptionScreenViewModel(INavigationService navigationService=null)
         {
+            MyNationality = new List<String> { "Afghan", "Belges", "Dutch"};
+            InitializeAsync();
             _navigationService = navigationService;
+        }
+
+        public async Task InitializeAsync()
+        {
+            var service = new DataService();
+            var placeForVisit = await service.GetPlace(); // Appel au service
+            foreach(Place placed in placeForVisit)
+            {
+                PlaceForVisit.Add(placed.NamePlace);
+            }
+            var placeDoVisit = await service.GetPlace(); // Appel au service
+            foreach(Place placede in placeDoVisit)
+            {
+                PlaceDoVisit.Add(placede.NamePlace);
+            }
+
         }
 
 // Validation du Bouton, On envoit les données du formulaire, on vérifie qu'elles sont correctes vis à vis du type de valeur dans la BD dans le service
@@ -121,21 +145,13 @@ namespace GuidMe1.ViewModel
 
         private void GoToRoleChoiceScreen()
         {
-            //var person = new Person() {
-            //                            Pseudo = _pseudo,
-            //                            FirstName = _firstName,
-            //                            LastName = _lastName,
-            //                            Sex = true,
-            //                            Password = _password,
-            //                            Nationality = _nationality,
-            //                            TypeRole = true,
-            //                            Rank = 0                                     
-            //                            };
-            //var service = new DataService();
-            //service.AddNewUser(person);
+            var person = new Person(Pseudo, Password, FirstName, LastName, CheckButton,  Nationality);
+
+            var service = new DataService();
+            service.AddNewUser(person);
             _navigationService.NavigateTo("RoleChoiceScreen");
         }
-// Bouton Retour a logon quand on ne vet pas 
+        // Bouton Retour a logon quand on ne veut pas 
         private ICommand _goToLogonScreenCommand;
 
         public ICommand GoToLogonScreenCommand

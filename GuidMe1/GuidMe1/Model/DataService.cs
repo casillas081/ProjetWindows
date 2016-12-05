@@ -19,23 +19,39 @@ namespace GuidMe1.Model
 
         public async Task<IEnumerable<Person>> GetPerson()
         {
-            var json = await pc.GetStringAsync(new Uri("http://localhost:65534/api/People"));
+            var json = await pc.GetStringAsync(new Uri("http://guidme.azurewebsites.net/api/People"));
             Person[] returnedData = JsonConvert.DeserializeObject<Person[]>(json);
             return returnedData;
         }
-
-        public void AddNewUser(Person p)
+        
+        public async Task<IEnumerable<Place>> GetPlace()
         {
-            //try
-            //{
-            //    var pc = new HttpClient();
-            //    var addUser = await pc.AddUserAsync(new Uri("URL de notre API"));
-            //}
-            //catch
-            //{
+            var json = await pc.GetStringAsync(new Uri("http://guidme.azurewebsites.net/api/Place"));
+            Place[] returnedPlace = JsonConvert.DeserializeObject<Place[]>(json);
+            return returnedPlace;
+        }
 
-            //}
-            
+        public async void AddNewUser(Person p)
+        {
+            try
+            {
+                var addUser = await pc.PostAsJsonAsync(new Uri("http://guidme.azurewebsites.net/api/People"),p);
+                if (addUser.IsSuccessStatusCode)
+                {
+                    //return addUser.Content.ReadAsStringAsync().Result;
+                    
+                }
+                else
+                {
+                    //return addUser.Content.ReadAsStringAsync().Result;
+                }
+
+            }
+            catch
+            {
+
+            }
+
 
         }
 

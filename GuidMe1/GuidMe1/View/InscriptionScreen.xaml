@@ -44,9 +44,11 @@
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Nationalité :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox HorizontalAlignment="Center">
+                <ComboBox HorizontalAlignment="Center"
+                          ItemsSource="{Binding MyNationality}"
+                          SelectedItem="{Binding Nationality, Mode=TwoWay}">
                     <ComboBoxItem>
-                        <TextBlock Text="Nationalité" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Nationality}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
@@ -55,17 +57,19 @@
             <TextBox Text="Vérification Mot de passe" TextAlignment="Center" Name="PasswordConfirm" BorderBrush="LightGray"/>
             <StackPanel>
                 <TextBlock Text="Lieu à visiter :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox HorizontalAlignment="Center">
+                <ComboBox HorizontalAlignment="Center"
+                          SelectedItem="{Binding PlaceForVisit,Mode=TwoWay}">
                     <ComboBoxItem>
-                        <TextBlock Text="Citadelle" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding PlaceForVisit}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Lieux connus :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <ComboBox HorizontalAlignment="Center">
+                <ComboBox HorizontalAlignment="Center"
+                          SelectedItem="{Binding PlaceDoVisit, Mode=TwoWay}">
                     <ComboBoxItem>
-                        <TextBlock Text="Henallux-IESN" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding PlaceDoVisit}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>

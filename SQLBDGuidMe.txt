@@ -45,9 +45,6 @@ create table Place (
      IdPlace varchar(10) not null,
      NamePlace varchar(30) not null,
      Adr_Street varchar(30) not null,
-     Adr_Number varchar(4) not null,
-     Adr_City varchar(30) not null,
-     Adr_ZipCode numeric(4) not null,
      CoordLat numeric(6,3) not null,
      CoordLong numeric(6,3) not null,
 	 

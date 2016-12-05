@@ -9,17 +9,20 @@ namespace GuidMe1.Model
     public class Person
     {
         public String Pseudo { get; set; }
+        public String Password { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
         public Boolean Sex { get; set; }
-        public String Password { get; set; }
+        
         public String Nationality { get; set; }
         public Boolean TypeRole { get; set; }
-        public double Rank { get; set; }
+        
         public Boolean IsOnline { get; set; }
+        public double Rank { get; set; }
+        public String IdPicture { get; set; }
 
 
-        public Person(String ps, String fN, String lN, Boolean sx, String psw, String natio, Boolean rol, Double ran)
+        public Person(String ps, String psw, String fN, String lN, Boolean sx,  String natio, Boolean rol = true, Boolean isOn = false,Double ran = 0, String pic = "pic001")
         {
             Pseudo = ps;
             FirstName = fN;
@@ -29,6 +32,7 @@ namespace GuidMe1.Model
             Nationality = natio;
             TypeRole = rol;
             Rank = ran;
+            IdPicture = pic;
         }
     }
 }

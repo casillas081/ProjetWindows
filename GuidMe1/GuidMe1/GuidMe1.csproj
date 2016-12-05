@@ -98,6 +98,7 @@
     <Compile Include="Model\AllPersons.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\EvaluationMatchedGuideViewModel.cs" />
     <Compile Include="ViewModel\GuideProfileViewModel.cs" />
