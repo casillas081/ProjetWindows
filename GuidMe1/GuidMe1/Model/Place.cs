@@ -9,7 +9,6 @@ namespace GuidMe1.Model
     public class Place
     {
         public String IdPlace { get; set; }
-        public String NamePlace { get; set; }
         public String Adresse { get; set; }
         public Double CoordLat { get; set; }
         public Double CoordLong { get; set; }
@@ -17,6 +16,11 @@ namespace GuidMe1.Model
         public Place()
         {
 
+        }
+
+        public override String ToString()
+        {
+            return Adresse;
         }
     }
 }

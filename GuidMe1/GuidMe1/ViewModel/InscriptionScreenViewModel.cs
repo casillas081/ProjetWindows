@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Views;
 using GuidMe1.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,9 +81,6 @@ namespace GuidMe1.ViewModel
             }
         }
 
-        
-
-
         private List<String> _placeForVisit;
 
         public List<String> PlaceForVisit
@@ -117,15 +115,17 @@ namespace GuidMe1.ViewModel
         public async Task InitializeAsync()
         {
             var service = new DataService();
-            var placeForVisit = await service.GetPlace(); // Appel au service
-            foreach(Place placed in placeForVisit)
+            var listPlaceForVisit = await service.GetPlace(); // Appel au service
+            PlaceForVisit = new List<String>();
+            foreach(TranslationPlace placed in listPlaceForVisit)
             {
-                PlaceForVisit.Add(placed.NamePlace);
+                PlaceForVisit.Add(placed.TranslationNamePlace);
             }
             var placeDoVisit = await service.GetPlace(); // Appel au service
-            foreach(Place placede in placeDoVisit)
+            PlaceDoVisit = new List<String>();
+            foreach(TranslationPlace placede in placeDoVisit)
             {
-                PlaceDoVisit.Add(placede.NamePlace);
+                PlaceDoVisit.Add(placede.TranslationNamePlace);
             }
 
         }

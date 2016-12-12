@@ -24,10 +24,10 @@ namespace GuidMe1.Model
             return returnedData;
         }
         
-        public async Task<IEnumerable<Place>> GetPlace()
+        public async Task<IEnumerable<TranslationPlace>> GetPlace()
         {
-            var json = await pc.GetStringAsync(new Uri("http://guidme.azurewebsites.net/api/Place"));
-            Place[] returnedPlace = JsonConvert.DeserializeObject<Place[]>(json);
+            var json = await pc.GetStringAsync(new Uri("http://localhost:62552/api/TranslationPlaces"));
+            var returnedPlace = JsonConvert.DeserializeObject<TranslationPlace[]>(json);
             return returnedPlace;
         }
 
@@ -35,17 +35,7 @@ namespace GuidMe1.Model
         {
             try
             {
-                var addUser = await pc.PostAsJsonAsync(new Uri("http://guidme.azurewebsites.net/api/People"),p);
-                if (addUser.IsSuccessStatusCode)
-                {
-                    //return addUser.Content.ReadAsStringAsync().Result;
-                    
-                }
-                else
-                {
-                    //return addUser.Content.ReadAsStringAsync().Result;
-                }
-
+                await pc.PostAsJsonAsync(new Uri("http://localhost:62552/api/People"),p);               
             }
             catch
             {

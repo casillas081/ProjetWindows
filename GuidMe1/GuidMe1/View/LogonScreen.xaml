@@ -21,9 +21,9 @@
         <StackPanel x:Name="MainStack" Grid.Row="1" Margin="0,158,0,-158">
             <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
 
-            <TextBox Text="Pseudo" TextAlignment="Center" Name="UserName" BorderBrush="LightGray" Margin="200,200,200,10"/>
+            <TextBox Text="{Binding Pseudo}" TextAlignment="Center" Name="UserName" BorderBrush="LightGray" PlaceholderText="Pseudo" Margin="200,200,200,10"/>
 
-            <TextBox Text="Mot de passe" TextAlignment="Center" Name="Password" BorderBrush="LightGray" Margin="200,10,200,10"/>
+            <TextBox Text="{Binding Password}" TextAlignment="Center" Name="Password" BorderBrush="LightGray" PlaceholderText="Mot de passe" Margin="200,10,200,10"/>
 
             <Button Content="Login" Background="LightGray" HorizontalAlignment="Center" Name="Login" Command="{Binding GoToRoleChoiceScreenCommand}"/>
             <HyperlinkButton Content="Inscription" Name="Inscription" HorizontalAlignment="Center" Command="{Binding GoToInscriptionScreenCommand}"/>

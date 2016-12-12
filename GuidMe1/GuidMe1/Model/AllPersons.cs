@@ -13,12 +13,12 @@ namespace GuidMe1.Model
         {
             return new List<Person>
             {
-                new Person("Garaith", "Julien", "Demoustier", true, "MotdePasse1","Belge", true, 5),
-                new Person("KaZzy", "Loic", "Cheron", true, "MotdePasse2","Belge", true, 4),
-                new Person("Caelus", "Christophe", "Schepmans", true, "MotdePasse2","Belge", true, 3),
-                new Person("Samiroquai", "Samuel", "Choltes", true, "MotdePasse2","Belge", true, 2),
-                new Person("Pikapichu", "Christine", "Charlier", false, "MotdePasse2", "Belge", true,1),
-                new Person("Kediss", "Valentin", "Veny", true, "MotdePasse2", "Belge", true, 0)
+                new Person("Garaith","MotdePasse1", "Julien", "Demoustier", true, "Belge"),
+                new Person("KaZzy", "MotdePasse2","Loic", "Cheron", true, "Belge"),
+                new Person("Caelus", "MotdePasse2", "Christophe", "Schepmans", true, "Belge"),
+                new Person("Samiroquai", "MotdePasse2", "Samuel", "Choltes", true, "Belge"),
+                new Person("Pikapichu", "MotdePasse2","Christine", "Charlier", false,  "Belge"),
+                new Person("Kediss", "MotdePasse2","Valentin", "Veny", true,  "Belge")
             };
         }
     }

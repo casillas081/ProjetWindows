@@ -33,8 +33,8 @@
         <TextBlock Grid.Row="0" Text="Formulaire d'inscription" HorizontalAlignment="Center" Foreground="Black" FontSize="28"/>
 
         <StackPanel x:Name="MainStack" Grid.Row="1" Margin="200,100,200,50">
-            <TextBox Text="{Binding FirstName}" TextAlignment="Center" Name="Name" BorderBrush="LightGray" />
-            <TextBox Text="{Binding LastName}" TextAlignment="Center" Name="LastName" BorderBrush="LightGray"/>
+            <TextBox Text="{Binding FirstName}" TextAlignment="Center" Name="Name" PlaceholderText="Prénom" BorderBrush="LightGray" />
+            <TextBox Text="{Binding LastName}" TextAlignment="Center" Name="LastName" PlaceholderText="Nom" BorderBrush="LightGray"/>
             <StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Sexe :" VerticalAlignment="Center"/>
@@ -52,25 +52,22 @@
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <TextBox Text="{Binding Pseudo}" TextAlignment="Center" Name="UserName" BorderBrush="LightGray"/>
-            <TextBox Text="{Binding Password}" TextAlignment="Center" Name="Password" BorderBrush="LightGray"/>
-            <TextBox Text="Vérification Mot de passe" TextAlignment="Center" Name="PasswordConfirm" BorderBrush="LightGray"/>
+            <TextBox Text="{Binding Pseudo}" TextAlignment="Center" Name="UserName" PlaceholderText="Pseudo" BorderBrush="LightGray"/>
+            <PasswordBox Password="{Binding Password}" Name="Password" PlaceholderText="Password" BorderBrush="LightGray"/>
+            <PasswordBox Password="{Binding Password}" Name="ConfirmPassword" PlaceholderText="Password" BorderBrush="LightGray"/>
             <StackPanel>
                 <TextBlock Text="Lieu à visiter :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox HorizontalAlignment="Center"
+                          ItemsSource="{Binding PlaceForVisit}"
                           SelectedItem="{Binding PlaceForVisit,Mode=TwoWay}">
-                    <ComboBoxItem>
-                        <TextBlock Text="{Binding PlaceForVisit}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </ComboBoxItem>
+                   
                 </ComboBox>
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Lieux connus :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox HorizontalAlignment="Center"
-                          SelectedItem="{Binding PlaceDoVisit, Mode=TwoWay}">
-                    <ComboBoxItem>
-                        <TextBlock Text="{Binding PlaceDoVisit}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </ComboBoxItem>
+                          SelectedItem="{Binding PlaceDoVisit, Mode=TwoWay}"
+                          ItemsSource="{Binding PlaceDoVisit}">                         
                 </ComboBox>
             </StackPanel>
         </StackPanel>
