@@ -95,11 +95,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Error\ApplicationError.cs" />
     <Compile Include="Model\AllPersons.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\LanguagePerson.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Place.cs" />
+    <Compile Include="Model\Token.cs" />
     <Compile Include="Model\TranslationPlace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\EvaluationMatchedGuideViewModel.cs" />
@@ -161,8 +163,16 @@
     <Content Include="Images\back.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\BackGround.png" />
+    <Content Include="Images\Backgrounds_01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\banner_01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\Guide_Button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\logo_01.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\message-2-xxl.png">

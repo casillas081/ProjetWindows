@@ -30,15 +30,14 @@
 
         </RelativePanel>
 
-        <TextBlock Grid.Row="0" Text="Formulaire d'inscription" HorizontalAlignment="Center" Foreground="Black" FontSize="28"/>
-
-        <StackPanel x:Name="MainStack" Grid.Row="1" Margin="200,100,200,50">
-            <TextBox Text="{Binding FirstName}" TextAlignment="Center" Name="Name" PlaceholderText="Prénom" BorderBrush="LightGray" />
-            <TextBox Text="{Binding LastName}" TextAlignment="Center" Name="LastName" PlaceholderText="Nom" BorderBrush="LightGray"/>
+        <Image Grid.Row="0" Source="/Images/banner_01.png" Height="200" Width="200" HorizontalAlignment="Center"></Image>
+        <StackPanel x:Name="MainStack" Grid.Row="1" Margin="200,0,200,0">
+            <TextBox Text="{Binding FirstName,Mode=TwoWay}" TextAlignment="Center" Name="Name" PlaceholderText="Prénom" BorderBrush="LightGray" />
+            <TextBox Text="{Binding LastName,Mode=TwoWay}" TextAlignment="Center" Name="LastName" PlaceholderText="Nom" BorderBrush="LightGray"/>
             <StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Sexe :" VerticalAlignment="Center"/>
-                    <RadioButton x:Name="Male" Content="H" IsChecked="{Binding CheckButton}"/>
+                    <RadioButton x:Name="Male" Content="H" IsChecked="{Binding Sex,Mode=TwoWay}"/>
                     <RadioButton x:Name="Female" Content="F" />
                 </StackPanel>
             </StackPanel>
@@ -52,9 +51,9 @@
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <TextBox Text="{Binding Pseudo}" TextAlignment="Center" Name="UserName" PlaceholderText="Pseudo" BorderBrush="LightGray"/>
-            <PasswordBox Password="{Binding Password}" Name="Password" PlaceholderText="Password" BorderBrush="LightGray"/>
-            <PasswordBox Password="{Binding Password}" Name="ConfirmPassword" PlaceholderText="Password" BorderBrush="LightGray"/>
+            <TextBox Text="{Binding Pseudo, Mode=TwoWay}" TextAlignment="Center" Name="UserName" PlaceholderText="Pseudo" BorderBrush="LightGray"/>
+            <PasswordBox Password="{Binding Password,Mode=TwoWay}" Name="Password" PlaceholderText="Password" BorderBrush="LightGray"/>
+            <PasswordBox Password="{Binding VerifPassword,Mode=TwoWay}" Name="ConfirmPassword" PlaceholderText="Vérification Password" BorderBrush="LightGray"/>
             <StackPanel>
                 <TextBlock Text="Lieu à visiter :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox HorizontalAlignment="Center"

@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,49 @@ using Windows.UI.Xaml.Navigation;
 
 namespace GuidMe1.ViewModel
 {
-    public class GuidScreenViewModel
+    public class GuidScreenViewModel : ViewModelBase
     {
+        private Boolean _isOnline;
+
+        public Boolean IsOnline
+        {
+            get { return _isOnline; }
+            set { _isOnline = value;
+                RaisePropertyChanged("IsOnline");
+            }
+        }
+
+        private TimeSpan _timePicker;
+
+        public TimeSpan TimePicker
+        {
+            get { return _timePicker; }
+            set { _timePicker = value; }
+        }
+
+
+        private ICommand _timeOnline;
+
+        public ICommand TimeOnline
+        {
+            get { _timeOnline = new RelayCommand(() => CalculateTimer());
+                return _timeOnline;
+            }
+        }
+
+        private void CalculateTimer()
+        {
+            //if(TimePicker > )
+            //{
+            //    IsOnline = true;
+            //}
+            //else
+            //{
+            //    IsOnline = false;
+            //}
+                
+        }
+
         private ICommand _goToParameterGuidCommand;
 
         public ICommand GoToParameterGuidCommand

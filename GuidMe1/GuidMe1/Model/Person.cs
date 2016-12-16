@@ -19,20 +19,19 @@ namespace GuidMe1.Model
         
         public Boolean IsOnline { get; set; }
         public double Rank { get; set; }
-        public String IdPicture { get; set; }
 
 
-        public Person(String ps, String psw, String fN, String lN, Boolean sx,  String natio, Boolean rol = true, Boolean isOn = false,Double ran = 0, String pic = "pic001")
+        public Person(String ps, String psw, String fN, String lN, Boolean sx,  String natio)
         {
             Pseudo = ps;
+            Password = psw;
             FirstName = fN;
             LastName = lN;
-            Sex = sx;
-            Password = psw;
+            Sex = sx;            
             Nationality = natio;
-            TypeRole = rol;
-            Rank = ran;
-            IdPicture = pic;
+            TypeRole = true;
+            IsOnline = false;
+            Rank = 0;
         }
     }
 }

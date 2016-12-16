@@ -238,6 +238,7 @@
     <Compile Include="Controllers\AvatarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguagePersonsController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Controllers\TranslationPlacesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

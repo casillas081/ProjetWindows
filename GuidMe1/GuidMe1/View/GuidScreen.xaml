@@ -58,8 +58,8 @@
 
         <TextBlock Text="GuidME" HorizontalAlignment="Center" Foreground="Black" FontSize="40"/>
         <TextBlock Text="Disponibilité" HorizontalAlignment="Center" Grid.Row="1"/>
-        <TimePicker x:Name="arrivalTimePicker" ClockIdentifier="24HourClock" Grid.Row="2" HorizontalAlignment="Center"/>
-        <Button Content="Disponible" Background="LightGray" HorizontalAlignment="Center" Name="Disponible" Grid.Row="3" />
+        <TimePicker x:Name="arrivalTimePicker" ClockIdentifier="24HourClock" Grid.Row="2" HorizontalAlignment="Center" Header="Heure     :     Min" Time="{Binding TimePicker}"/>
+        <Button Content="Disponible" Background="LightGray" HorizontalAlignment="Center" Name="Disponible" Grid.Row="3" Command="{Binding TimeOnline,Mode=TwoWay}" />
 
     </Grid>
 </Page>

@@ -38,12 +38,12 @@ namespace GuidMe1.ViewModel
             }
         }
 
-        private bool _checkButton;
+        private bool _sex;
 
-        public bool CheckButton
+        public bool Sex
         {
-            get { return _checkButton; }
-            set { _checkButton = value;
+            get { return _sex; }
+            set { _sex = value;
                 RaisePropertyChanged("Sex");  
             }
         }
@@ -67,6 +67,15 @@ namespace GuidMe1.ViewModel
                 RaisePropertyChanged("Password");
             }
         }
+
+        private String _verifPassword;
+
+        public String VerifPassword
+        {
+            get { return _verifPassword; }
+            set { _verifPassword = value; }
+        }
+
 
         public List<String> MyNationality { get; set; }
 
@@ -107,7 +116,7 @@ namespace GuidMe1.ViewModel
         [PreferredConstructor]
         public InscriptionScreenViewModel(INavigationService navigationService=null)
         {
-            MyNationality = new List<String> { "Afghan", "Belges", "Dutch"};
+            MyNationality = new List<String> { "Afghan", "Belge", "Dutch"};
             InitializeAsync();
             _navigationService = navigationService;
         }
@@ -145,11 +154,10 @@ namespace GuidMe1.ViewModel
 
         private void GoToRoleChoiceScreen()
         {
-            var person = new Person(Pseudo, Password, FirstName, LastName, CheckButton,  Nationality);
-
-            var service = new DataService();
-            service.AddNewUser(person);
-            _navigationService.NavigateTo("RoleChoiceScreen");
+                var person = new Person(Pseudo, Password, FirstName, LastName, Sex, Nationality);
+                var service = new DataService();
+                service.AddNewUser(person);
+                _navigationService.NavigateTo("RoleChoiceScreen");        
         }
         // Bouton Retour a logon quand on ne veut pas 
         private ICommand _goToLogonScreenCommand;
