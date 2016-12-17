@@ -72,9 +72,31 @@ namespace GuidMe1.Model
             return returnedPlace;
         }
 
-        public async void AddNewUser(Person p)
+        public async Task<ApplicationError> AddNewUser(Person p)
         {
-                await pc.PostAsJsonAsync(new Uri("http://localhost:62552/api/Users"),p);
+            pc.BaseAddress = new Uri("http://guidme.azurewebsites.net/api/Account/Register");
+            try
+            {
+                var response = pc.PostAsJsonAsync(pc.BaseAddress, p).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    error.ErrorMessage = response.Content.ReadAsStringAsync().Result;
+                    error.IsOk = response.IsSuccessStatusCode;
+                    return error;
+                }
+                else
+                {
+                    error.ErrorMessage = response.Content.ReadAsStringAsync().Result;
+                    error.IsOk = response.IsSuccessStatusCode;
+                    return error;
+                }
+            }
+            catch(Exception e)
+            {
+                error.ErrorMessage = e.ToString();
+                error.IsOk = false;
+                return error;
+            }
         }
 
     }

@@ -156,7 +156,7 @@ namespace GuidMe1.ViewModel
         {
                 var person = new Person(Pseudo, Password, FirstName, LastName, Sex, Nationality);
                 var service = new DataService();
-                service.AddNewUser(person);
+                var id = service.AddNewUser(person);
                 _navigationService.NavigateTo("RoleChoiceScreen");        
         }
         // Bouton Retour a logon quand on ne veut pas 

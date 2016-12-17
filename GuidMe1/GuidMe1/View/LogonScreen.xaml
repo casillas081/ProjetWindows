@@ -23,7 +23,7 @@
             
             <TextBox Text="{Binding Pseudo,Mode=TwoWay}" TextAlignment="Center" Name="UserName" BorderBrush="LightGray" PlaceholderText="Pseudo" Margin="200,200,200,10"/>
 
-            <TextBox Text="{Binding Password,Mode=TwoWay}" TextAlignment="Center" Name="Password" BorderBrush="LightGray" PlaceholderText="Mot de passe" Margin="200,10,200,10"/>
+            <PasswordBox Password="{Binding Password,Mode=TwoWay}" Name="Password" BorderBrush="LightGray" PlaceholderText="Mot de passe" Margin="200,10,200,10"/>
 
             <Button Content="Login" Background="LightGray" HorizontalAlignment="Center" Name="Login" Command="{Binding GoToRoleChoiceScreenCommand}"/>
             <HyperlinkButton Content="Inscription" Name="Inscription" HorizontalAlignment="Center" Command="{Binding GoToInscriptionScreenCommand}"/>

@@ -8,7 +8,7 @@ namespace GuidMe1.Model
 {
     public class Person
     {
-        public String Pseudo { get; set; }
+        public String Email { get; set; }
         public String Password { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
@@ -21,9 +21,9 @@ namespace GuidMe1.Model
         public double Rank { get; set; }
 
 
-        public Person(String ps, String psw, String fN, String lN, Boolean sx,  String natio)
+        public Person(String em, String psw, String fN, String lN, Boolean sx,  String natio)
         {
-            Pseudo = ps;
+            Email = em;
             Password = psw;
             FirstName = fN;
             LastName = lN;

@@ -90,7 +90,8 @@ namespace GuidMe1.ViewModel
             
             if(Pseudo != null && Password != null)
             {
-                GetToken(Pseudo, Password);
+                _navigationService.NavigateTo("RoleChoiceScreen", Token);
+                //GetToken(Pseudo, Password);
             }
         }
 

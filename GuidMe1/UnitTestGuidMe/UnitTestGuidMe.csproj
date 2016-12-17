@@ -64,12 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GuidMeClassLibrary\GuidMeClassLibrary.csproj">
-      <Project>{d73a85fd-c167-49d5-8447-1b4c8b7ea64e}</Project>
-      <Name>GuidMeClassLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
