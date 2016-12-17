@@ -103,6 +103,7 @@
     <Compile Include="Model\Place.cs" />
     <Compile Include="Model\Token.cs" />
     <Compile Include="Model\TranslationPlace.cs" />
+    <Compile Include="Model\VisitorService.cs" />
     <Compile Include="Model\Want_To_Guide.cs" />
     <Compile Include="Model\Want_To_Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -251,7 +252,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
