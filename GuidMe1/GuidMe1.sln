@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuidMe1", "GuidMe1\GuidMe1.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestGuidMe", "UnitTestGuidMe\UnitTestGuidMe.csproj", "{40DB6208-656B-4527-9023-5D305130376F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuidMeWebApp", "E:\ProjetWindows-master\smartCity\GuidMe1\GuidMeWebApp\GuidMeWebApp.csproj", "{BB751A13-3875-4B0D-A193-6E6EB377E8B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuidMeWebApp", "GuidMeWebApp\GuidMeWebApp.csproj", "{BB751A13-3875-4B0D-A193-6E6EB377E8B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
