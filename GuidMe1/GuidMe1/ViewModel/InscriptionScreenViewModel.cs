@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
+using GuidMe1.Error;
 using GuidMe1.Model;
 using System;
 using System.Collections.Generic;
@@ -48,13 +49,13 @@ namespace GuidMe1.ViewModel
             }
         }
 
-        private String _pseudo;
+        private String _email;
 
-        public String Pseudo
+        public String Email
         {
-            get { return _pseudo; }
-            set { _pseudo = value;
-                RaisePropertyChanged("Pseudo");
+            get { return _email; }
+            set { _email = value;
+                RaisePropertyChanged("Email");
             }
         }
 
@@ -68,12 +69,14 @@ namespace GuidMe1.ViewModel
             }
         }
 
-        private String _verifPassword;
+        private String _confirmPassword;
 
-        public String VerifPassword
+        public String ConfirmPassword
         {
-            get { return _verifPassword; }
-            set { _verifPassword = value; }
+            get { return _confirmPassword; }
+            set { _confirmPassword = value;
+                RaisePropertyChanged("ConfirmPassword");
+            }
         }
 
 
@@ -90,9 +93,11 @@ namespace GuidMe1.ViewModel
             }
         }
 
-        private List<String> _placeForVisit;
+        public ObservableCollection<String> MyPlaceForVisit { get; set; }
 
-        public List<String> PlaceForVisit
+        private String _placeForVisit;
+
+        public String PlaceForVisit
         {
             get { return _placeForVisit; }
             set { _placeForVisit = value;
@@ -100,41 +105,52 @@ namespace GuidMe1.ViewModel
             }
         }
 
-        private List<String> _placeDoVisit;
+        public ObservableCollection<String> MyPlaceDoVisit { get; set; }
 
-        public List<String> PlaceDoVisit
+        private String _placeDoVisit;
+
+        public String PlaceDoVisit
         {
             get { return _placeDoVisit; }
-            set { _placeDoVisit = value;
+            set
+            {
+                _placeDoVisit = value;
                 RaisePropertyChanged("PlaceDoVisit");
             }
         }
-        
+
+        public ObservableCollection<TranslationPlace> thePlaceForVisit { get; set; }
+
+        public ObservableCollection<TranslationPlace> thePlaceDoVisit { get; set; }
 
         private INavigationService _navigationService;
 
         [PreferredConstructor]
         public InscriptionScreenViewModel(INavigationService navigationService=null)
         {
-            MyNationality = new List<String> { "Afghan", "Belge", "Dutch"};
-            InitializeAsync();
+            MyNationality = new List<String> {"Afghan", "Belge", "Dutch"};
             _navigationService = navigationService;
+            MyPlaceForVisit = new ObservableCollection<string>();
+            MyPlaceDoVisit = new ObservableCollection<string>();
+            InitializeAsync();
         }
 
         public async Task InitializeAsync()
         {
             var service = new DataService();
-            var listPlaceForVisit = await service.GetPlace(); // Appel au service
-            PlaceForVisit = new List<String>();
-            foreach(TranslationPlace placed in listPlaceForVisit)
+            var myPlaceForVisit = await service.GetPlace(); // Appel au service
+            thePlaceForVisit = new ObservableCollection<TranslationPlace>(myPlaceForVisit);
+
+            foreach (TranslationPlace placed in myPlaceForVisit)
             {
-                PlaceForVisit.Add(placed.TranslationNamePlace);
+                MyPlaceForVisit.Add(placed.TranslationNamePlace);
             }
-            var placeDoVisit = await service.GetPlace(); // Appel au service
-            PlaceDoVisit = new List<String>();
-            foreach(TranslationPlace placede in placeDoVisit)
+
+            var myPlaceDoVisit = await service.GetPlace(); // Appel au service
+            thePlaceDoVisit = new ObservableCollection<TranslationPlace>(myPlaceDoVisit);
+            foreach (TranslationPlace placede in myPlaceDoVisit)
             {
-                PlaceDoVisit.Add(placede.TranslationNamePlace);
+                MyPlaceDoVisit.Add(placede.TranslationNamePlace);
             }
 
         }
@@ -152,12 +168,42 @@ namespace GuidMe1.ViewModel
             }
         }
 
-        private void GoToRoleChoiceScreen()
+        private async void GoToRoleChoiceScreen()
         {
-                var person = new Person(Pseudo, Password, FirstName, LastName, Sex, Nationality);
-                var service = new DataService();
-                var id = service.AddNewUser(person);
-                _navigationService.NavigateTo("RoleChoiceScreen");        
+            var person =  new RegisterBindingModel(Email, Password, ConfirmPassword, FirstName, LastName, Sex, Nationality);
+            var service = new DataService();
+            var error1 = await service.AddNewUser(person);
+            if (error1.IsOk)
+            {
+                var idPlace = "";
+                for(int i = 0; i < thePlaceForVisit.Count(); i++)
+                {
+                    if (thePlaceForVisit[i].TranslationNamePlace.Equals(PlaceForVisit))
+                    {
+                        idPlace = thePlaceForVisit[i].Place.IdPlace;
+                        break;
+                    }
+                }
+                var placeConfirmed = await service.GetPlaceId(idPlace);
+                var wantToGuid = new Want_To_Guide(person, placeConfirmed);
+                var error2 = await service.AddWantToGuide(wantToGuid);
+                if (error2.IsOk)
+                {
+                    _navigationService.NavigateTo("RoleChoiceScreen");
+                }
+                else
+                {
+                    var dialog = new Windows.UI.Popups.MessageDialog("Status de la requête : " + error2.ErrorMessage);
+                    dialog.ShowAsync();
+                }
+            }
+            else
+            {
+                var dialog = new Windows.UI.Popups.MessageDialog("Status de la requête : " + error1.ErrorMessage);
+                dialog.ShowAsync();
+            }
+            
+            
         }
         // Bouton Retour a logon quand on ne veut pas 
         private ICommand _goToLogonScreenCommand;

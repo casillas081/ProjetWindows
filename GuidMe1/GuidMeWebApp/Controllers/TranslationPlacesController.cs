@@ -18,9 +18,9 @@ namespace GuidMeWebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/TranslationPlaces
-        public IQueryable<TranslationPlace> GetTranslationPlaces()
+        public IEnumerable<TranslationPlace> GetTranslationPlaces()
         {
-            return db.TranslationPlaces;
+            return db.TranslationPlaces.ToList();
         }
 
         // GET: api/TranslationPlaces/5

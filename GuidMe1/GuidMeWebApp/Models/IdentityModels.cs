@@ -219,12 +219,20 @@ namespace GuidMeWebApp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdWantToGuid { get; set; }
 
-        public ApplicationUser person { get; set; }
+        public ApplicationUser Person { get; set; }
 
-        public virtual Place place { get; set; }
+        public virtual Place Place { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
+    }
+
+    public class Want_To_GuidCreateModel
+    {
+        public string Id { get; set; }
+        public String Address { get; set; }
+        public DbGeography Position { get; set; }
+
     }
 
     public class Want_To_Visit

@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using GuidMeWebApp.Models;
+using System.Security.Claims;
+using System.Data.Entity.Spatial;
 
 namespace GuidMeWebApp.Controllers
 {
@@ -73,17 +75,24 @@ namespace GuidMeWebApp.Controllers
 
         // POST: api/Want_To_Guid
         [ResponseType(typeof(Want_To_Guid))]
-        public async Task<IHttpActionResult> PostWant_To_Guid(Want_To_Guid want_To_Guid)
+        public async Task<IHttpActionResult> PostWant_To_Guid(Want_To_GuidCreateModel want_To_Guid)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Want_To_Guid.Add(want_To_Guid);
+            var identity = User.Identity as ClaimsIdentity;
+            Claim identitytClaim = identity.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == identitytClaim.Value);
+            Want_To_Guid wtg = new Want_To_Guid();
+            var pointString = string.Format("POINT({0} {1})", want_To_Guid.Position.Longitude, want_To_Guid.Position.Latitude);
+            DbGeography geo = DbGeography.PointFromText(pointString, 4326);
+            wtg.Place = new Place() { IdPlace = want_To_Guid.Id, Address = want_To_Guid.Address, Position = geo };
+            wtg.Person = user;
+            db.Want_To_Guid.Add(wtg);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = want_To_Guid.IdWantToGuid }, want_To_Guid);
+            return Created("api/Want_To_Guid", wtg);
         }
 
         // DELETE: api/Want_To_Guid/5

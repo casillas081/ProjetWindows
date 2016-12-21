@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GuidMe1.Model
-{
+{ /// <summary>
+/// Modifier cette classe en : RegisterBindingModel
+/// </summary>
     public class Person
     {
         public String Email { get; set; }

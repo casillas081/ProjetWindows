@@ -41,17 +41,26 @@ namespace GuidMe1.ViewModel
             }
         }
 
-        private void CalculateTimer()
+        private async void CalculateTimer()
         {
-            //if(TimePicker > )
-            //{
-            //    IsOnline = true;
-            //}
-            //else
-            //{
-            //    IsOnline = false;
-            //}
-                
+            var sec = 60;
+            var minutes = TimePicker.Minutes - 1;
+            var heure = TimePicker.Hours;
+            var decompte = true;
+            while(decompte)
+            {
+                sec--;
+                if (sec == 0 && minutes >= 0)
+                {
+                    minutes--;
+                    sec = 60;
+                    if (minutes >= 0 && heure > 0)
+                    {
+                        heure--;
+                        minutes = 60;
+                    }
+                }
+            }              
         }
 
         private ICommand _goToParameterGuidCommand;

@@ -9,7 +9,13 @@ namespace GuidMe1.Model
     public class Want_To_Guide
     {
         public int IdWantToGuid { get; set; }
-        public Person Person { get; set; }
+        public RegisterBindingModel Person { get; set; }
         public Place Place { get; set; }
+
+        public Want_To_Guide(RegisterBindingModel p, Place pl)
+        {
+            Person = p;
+            Place = pl;
+        }
     }
 }

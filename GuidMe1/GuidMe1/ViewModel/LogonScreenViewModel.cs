@@ -19,13 +19,14 @@ namespace GuidMe1.ViewModel
     public class LogonScreenViewModel : ViewModelBase, INotifyPropertyChanged
     {
         public LogonScreenViewModel() {}
-        private String _pseudo;
+        private String _email;
 
-        public String Pseudo
+        public String Email
         {
-            get { return _pseudo; }
-            set { _pseudo = value;
-                RaisePropertyChanged("Pseudo");
+            get { return _email; }
+            set {
+                _email = value;
+                RaisePropertyChanged("Email");
             }
         }
 
@@ -88,17 +89,16 @@ namespace GuidMe1.ViewModel
         private void GoToRoleChoiceScreen()
         {
             
-            if(Pseudo != null && Password != null)
+            if(Email != null && Password != null)
             {
-                _navigationService.NavigateTo("RoleChoiceScreen", Token);
-                //GetToken(Pseudo, Password);
+                GetToken(Email, Password);
             }
         }
 
-        public async Task GetToken(string _pseudo, string _password)
+        public async Task GetToken(string _email, string _password)
         {
             var service = new DataService();
-            ApplicationError error = await service.GetToken(Pseudo, Password);
+            ApplicationError error = await service.GetToken(Email, Password);
             if (error.IsOk)
             {
                 var x2 = service.GetPerson();

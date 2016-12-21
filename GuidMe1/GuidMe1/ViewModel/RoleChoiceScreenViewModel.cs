@@ -13,6 +13,16 @@ namespace GuidMe1.ViewModel
 {
     public class RoleChoiceScreenViewModel
     {
+
+        public string Token
+        {
+            get; set;
+        }
+        public void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Token = (string)e.Parameter;
+        }
+
         public RoleChoiceScreenViewModel(){}
 
         private ICommand _goToGuidScreenCommand;

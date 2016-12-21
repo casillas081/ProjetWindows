@@ -18,9 +18,17 @@ namespace GuidMeWebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Places
-        public IQueryable<Place> GetPlaces()
+        public Models.DTOs.Places [] GetPlaces()
         {
-            return db.Places;
+           Models.DTOs.Places[] dtos = db.Places.Select(entity =>
+           new Models.DTOs.Places()
+           {
+               IdPlace = entity.IdPlace,
+               Address = entity.Address,
+               Latitude = entity.Position.Latitude,
+               Longitude = entity.Position.Longitude
+           }).ToArray();
+            return dtos;
         }
 
         // GET: api/Places/5

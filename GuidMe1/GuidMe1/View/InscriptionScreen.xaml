@@ -51,13 +51,13 @@
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <TextBox Text="{Binding Pseudo, Mode=TwoWay}" TextAlignment="Center" Name="UserName" PlaceholderText="Pseudo" BorderBrush="LightGray"/>
+            <TextBox Text="{Binding Email, Mode=TwoWay}" TextAlignment="Center" Name="UserName" PlaceholderText="Email" BorderBrush="LightGray"/>
             <PasswordBox Password="{Binding Password,Mode=TwoWay}" Name="Password" PlaceholderText="Password" BorderBrush="LightGray"/>
-            <PasswordBox Password="{Binding VerifPassword,Mode=TwoWay}" Name="ConfirmPassword" PlaceholderText="Vérification Password" BorderBrush="LightGray"/>
+            <PasswordBox Password="{Binding ConfirmPassword,Mode=TwoWay}" Name="ConfirmPassword" PlaceholderText="Vérification Password" BorderBrush="LightGray"/>
             <StackPanel>
                 <TextBlock Text="Lieu à visiter :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox HorizontalAlignment="Center"
-                          ItemsSource="{Binding PlaceForVisit}"
+                          ItemsSource="{Binding MyPlaceForVisit,Mode=TwoWay}"
                           SelectedItem="{Binding PlaceForVisit,Mode=TwoWay}">
                    
                 </ComboBox>
@@ -66,7 +66,7 @@
                 <TextBlock Text="Lieux connus :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <ComboBox HorizontalAlignment="Center"
                           SelectedItem="{Binding PlaceDoVisit, Mode=TwoWay}"
-                          ItemsSource="{Binding PlaceDoVisit}">                         
+                          ItemsSource="{Binding MyPlaceDoVisit, Mode=TwoWay}">                         
                 </ComboBox>
             </StackPanel>
         </StackPanel>
