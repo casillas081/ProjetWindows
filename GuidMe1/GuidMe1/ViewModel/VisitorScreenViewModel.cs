@@ -87,7 +87,7 @@ namespace GuidMe1.ViewModel
         //CONSTRUCTOR
         public VisitorScreenViewModel(INavigationService navigationService = null)
         {
-            Persons = new ObservableCollection<Person>(AllPersons.GetAllPersons());
+            //Persons = new ObservableCollection<Person>(AllPersons.GetAllPersons());
             _navigationService = navigationService;
         }
 

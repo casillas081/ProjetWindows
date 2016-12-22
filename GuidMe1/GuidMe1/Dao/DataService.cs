@@ -1,4 +1,5 @@
-﻿using GuidMe1.Error;
+﻿using GuidMe1.Dao;
+using GuidMe1.Error;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,9 +43,9 @@ namespace GuidMe1.Model
                 {
                     error.IsOk = tokenResponse.IsSuccessStatusCode;
                     var token = tokenResponse.Content.ReadAsAsync<Token>(new[] { new JsonMediaTypeFormatter() }).Result;
-                    pc.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.AccessToken);
+                    pc.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                     error.ErrorMessage = token.AccessToken; // recupère le token
-                    Token = token.AccessToken;
+                    TokenGlobal.Token = token.AccessToken;
                     var authorizedResponse = pc.GetAsync(new Uri("http://localhost:57610/api/Values")).Result;
                     return error;
                 }
@@ -63,7 +65,7 @@ namespace GuidMe1.Model
         }
         public async Task<Person> GetPerson()
         {
-            pc.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
+            pc.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenGlobal.Token);
             var json = await pc.GetStringAsync(new Uri("http://localhost:57610/api/Account/Users"));
             Person returnedData = JsonConvert.DeserializeObject<Person>(json);
             return returnedData;
@@ -111,9 +113,10 @@ namespace GuidMe1.Model
             }
         }
 
-        public async Task<ApplicationError> AddWantToGuide(Want_To_Guide wtg)
+        public async Task<ApplicationError> AddWantToGuide(Want_To_GuidCreateModel wtg)
         {
             pc3.BaseAddress = new Uri("http://localhost:57610/api/Want_To_Guid");
+            pc3.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", TokenGlobal.Token);
             try
             {
                 var response = pc3.PostAsJsonAsync(pc3.BaseAddress, wtg).Result;

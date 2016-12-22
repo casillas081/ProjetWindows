@@ -154,8 +154,8 @@ namespace GuidMeWebApp.Models
         [MaxLength(100), MinLength(1)]
         public String Address { get; set; }
 
-        [Required]
-        public DbGeography Position { get; set; }
+        /*[Required]
+        public DbGeography Position { get; set; }*/
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
@@ -231,7 +231,8 @@ namespace GuidMeWebApp.Models
     {
         public string Id { get; set; }
         public String Address { get; set; }
-        public DbGeography Position { get; set; }
+        public string IdPlace { get; set; }
+        /*public DbGeography Position { get; set; }*/
 
     }
 

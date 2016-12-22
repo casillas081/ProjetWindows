@@ -119,6 +119,17 @@ namespace GuidMe1.ViewModel
             }
         }
 
+        private Person _currentUser;
+
+        public Person CurrentUser
+        {
+            get { return _currentUser; }
+            set { _currentUser = value;
+                RaisePropertyChanged("CurrentUser");
+            }
+        }
+
+
         public ObservableCollection<TranslationPlace> thePlaceForVisit { get; set; }
 
         public ObservableCollection<TranslationPlace> thePlaceDoVisit { get; set; }
@@ -175,27 +186,39 @@ namespace GuidMe1.ViewModel
             var error1 = await service.AddNewUser(person);
             if (error1.IsOk)
             {
-                var idPlace = "";
-                for(int i = 0; i < thePlaceForVisit.Count(); i++)
+                var errorToken = await service.GetToken(person.Email, person.Password);
+                if (errorToken.IsOk)
                 {
-                    if (thePlaceForVisit[i].TranslationNamePlace.Equals(PlaceForVisit))
+                    var idPlace = "";
+                    for (int i = 0; i < thePlaceForVisit.Count(); i++)
                     {
-                        idPlace = thePlaceForVisit[i].Place.IdPlace;
-                        break;
+                        if (thePlaceForVisit[i].TranslationNamePlace.Equals(PlaceForVisit))
+                        {
+                            idPlace = thePlaceForVisit[i].Place.IdPlace;
+                            break;
+                        }
                     }
-                }
-                var placeConfirmed = await service.GetPlaceId(idPlace);
-                var wantToGuid = new Want_To_Guide(person, placeConfirmed);
-                var error2 = await service.AddWantToGuide(wantToGuid);
-                if (error2.IsOk)
-                {
-                    _navigationService.NavigateTo("RoleChoiceScreen");
+                    var placeConfirmed = await service.GetPlaceId(idPlace);
+                    CurrentUser = await service.GetPerson();
+                    Want_To_GuidCreateModel wantToGuid = new Want_To_GuidCreateModel(CurrentUser.Id, placeConfirmed.Address, placeConfirmed.IdPlace);
+                    var error2 = await service.AddWantToGuide(wantToGuid);
+                    if (error2.IsOk)
+                    {
+                        _navigationService.NavigateTo("RoleChoiceScreen");
+                    }
+                    else
+                    {
+                        var dialog = new Windows.UI.Popups.MessageDialog("Status de la requête : " + error2.ErrorMessage);
+                        dialog.ShowAsync();
+                    }
                 }
                 else
                 {
-                    var dialog = new Windows.UI.Popups.MessageDialog("Status de la requête : " + error2.ErrorMessage);
+                    var dialog = new Windows.UI.Popups.MessageDialog("Status de la requête :" + errorToken.ErrorMessage);
                     dialog.ShowAsync();
+                    _navigationService.NavigateTo("LogonScreen");
                 }
+                
             }
             else
             {

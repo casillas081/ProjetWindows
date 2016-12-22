@@ -26,7 +26,7 @@ namespace GuidMeWebApp.Models.Test
 
                 Address = "Rue des coqueliquos, 27 5000 Namur",
 
-                Position = DbGeography.FromText("POINT(4.861107 50.459908)"),
+                /*Position = DbGeography.FromText("POINT(4.861107 50.459908)"),*/
             };
             context.Places.Add(placed);
             context.SaveChanges();

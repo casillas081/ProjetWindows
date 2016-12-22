@@ -62,7 +62,7 @@ namespace GuidMe1.ViewModel
         {
             _navigationService = navigationService;
 
-            Persons = new ObservableCollection<Person>(AllPersons.GetAllPersons());
+            //Persons = new ObservableCollection<Person>(AllPersons.GetAllPersons());
         }
     }
 }

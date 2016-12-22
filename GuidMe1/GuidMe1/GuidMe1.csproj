@@ -95,8 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dao\TokenGlobal.cs" />
     <Compile Include="Error\ApplicationError.cs" />
-    <Compile Include="Model\AllPersons.cs" />
     <Compile Include="Model\Avatar.cs" />
     <Compile Include="Dao\DataService.cs" />
     <Compile Include="Model\LanguagePerson.cs" />
@@ -106,8 +106,8 @@
     <Compile Include="Model\Token.cs" />
     <Compile Include="Model\TranslationPlace.cs" />
     <Compile Include="Model\VisitorService.cs" />
+    <Compile Include="Model\Want_To_Guid.cs" />
     <Compile Include="Model\Want_To_GuidCreateModel.cs" />
-    <Compile Include="Model\Want_To_Guide.cs" />
     <Compile Include="Model\Want_To_Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\EvaluationMatchedGuideViewModel.cs" />

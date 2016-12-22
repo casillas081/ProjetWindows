@@ -85,9 +85,9 @@ namespace GuidMeWebApp.Controllers
             Claim identitytClaim = identity.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
             ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == identitytClaim.Value);
             Want_To_Guid wtg = new Want_To_Guid();
-            var pointString = string.Format("POINT({0} {1})", want_To_Guid.Position.Longitude, want_To_Guid.Position.Latitude);
-            DbGeography geo = DbGeography.PointFromText(pointString, 4326);
-            wtg.Place = new Place() { IdPlace = want_To_Guid.Id, Address = want_To_Guid.Address, Position = geo };
+            /*var pointString = string.Format("POINT({0} {1})", want_To_Guid.Position.Longitude, want_To_Guid.Position.Latitude);
+            DbGeography geo = DbGeography.PointFromText(pointString, 4326);*/
+            wtg.Place = new Place() {IdPlace = want_To_Guid.Id, Address = want_To_Guid.Address /*Position = geo*/ };
             wtg.Person = user;
             db.Want_To_Guid.Add(wtg);
             await db.SaveChangesAsync();

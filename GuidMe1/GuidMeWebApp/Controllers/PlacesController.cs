@@ -24,9 +24,9 @@ namespace GuidMeWebApp.Controllers
            new Models.DTOs.Places()
            {
                IdPlace = entity.IdPlace,
-               Address = entity.Address,
-               Latitude = entity.Position.Latitude,
-               Longitude = entity.Position.Longitude
+               Address = entity.Address
+               /*Latitude = entity.Position.Latitude,
+               Longitude = entity.Position.Longitude*/
            }).ToArray();
             return dtos;
         }

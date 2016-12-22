@@ -9,7 +9,7 @@ namespace GuidMeWebApp.Models.DTOs
     {
         public String IdPlace { get; set; }
         public String Address { get; set; }
-        public double? Latitude { get; set; }
-        public double? Longitude { get; set; }
+        /*public double? Latitude { get; set; }
+        public double? Longitude { get; set; }*/
     }
 }
