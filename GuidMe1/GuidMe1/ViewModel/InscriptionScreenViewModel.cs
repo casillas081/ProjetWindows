@@ -139,7 +139,7 @@ namespace GuidMe1.ViewModel
         [PreferredConstructor]
         public InscriptionScreenViewModel(INavigationService navigationService=null)
         {
-            MyNationality = new List<String> {"Afghan", "Belge", "Dutch"};
+            MyNationality = new List<String> {"Allemand", "Autrichien","Belge","Bulgare","Chyprien","Croate","Dannois","Espagnol", "Estonien", "Finlandais", "Français","Grecs", "Hongrois", "Irlandais", "Italien", "Letton","Lituanien","Luxembourgeois", "Maltais", "Néerlandais","Polonais", "Portugais", "Tchèque","Roumain","Anglais","Slovaque", "Slovène", "Suédois" };
             _navigationService = navigationService;
             MyPlaceForVisit = new ObservableCollection<string>();
             MyPlaceDoVisit = new ObservableCollection<string>();
@@ -201,10 +201,33 @@ namespace GuidMe1.ViewModel
                     var placeConfirmed = await service.GetPlaceId(idPlace);
                     CurrentUser = await service.GetPerson();
                     Want_To_GuidCreateModel wantToGuid = new Want_To_GuidCreateModel(CurrentUser.Id, placeConfirmed.Address, placeConfirmed.IdPlace);
+                    
                     var error2 = await service.AddWantToGuide(wantToGuid);
+                    
                     if (error2.IsOk)
                     {
-                        _navigationService.NavigateTo("RoleChoiceScreen");
+                        var idPlace1 = "";
+                        for (int i = 0; i < thePlaceDoVisit.Count(); i++)
+                        {
+                            if (thePlaceDoVisit[i].TranslationNamePlace.Equals(PlaceDoVisit))
+                            {
+                                idPlace1 = thePlaceDoVisit[i].Place.IdPlace;
+                                break;
+                            }
+                        }
+                        var placeConfirmed1 = await service.GetPlaceId(idPlace1);
+                        Want_To_VisitCreateModel wantToVisit = new Want_To_VisitCreateModel(CurrentUser.Id, placeConfirmed1.Address, placeConfirmed1.IdPlace);
+                        var error3 = await service.AddWantToVisit(wantToVisit);
+                        if (error3.IsOk)
+                        {
+                            _navigationService.NavigateTo("RoleChoiceScreen");
+                        }
+                        else
+                        {
+                            var dialog = new Windows.UI.Popups.MessageDialog("Status de la requête : " + error3.ErrorMessage);
+                            dialog.ShowAsync();
+                        }
+
                     }
                     else
                     {

@@ -223,7 +223,6 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DTOs\Placed.cs" />
     <Compile Include="Models\DTOs\Places.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Test\DbInitializer.cs" />

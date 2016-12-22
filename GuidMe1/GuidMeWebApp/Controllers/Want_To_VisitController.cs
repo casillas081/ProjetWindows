@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using GuidMeWebApp.Models;
+using System.Security.Claims;
 
 namespace GuidMeWebApp.Controllers
 {
@@ -73,17 +74,24 @@ namespace GuidMeWebApp.Controllers
 
         // POST: api/Want_To_Visit
         [ResponseType(typeof(Want_To_Visit))]
-        public async Task<IHttpActionResult> PostWant_To_Visit(Want_To_Visit want_To_Visit)
+        public async Task<IHttpActionResult> PostWant_To_Visit(Want_To_VisitCreateModel want_To_Visit)
         {
-            if (!ModelState.IsValid)
+            f(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Want_To_Visit.Add(want_To_Visit);
+            var identity = User.Identity as ClaimsIdentity;
+            Claim identitytClaim = identity.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == identitytClaim.Value);
+            Want_To_Visit wtg = new Want_To_Visit();
+            /*var pointString = string.Format("POINT({0} {1})", want_To_Guid.Position.Longitude, want_To_Guid.Position.Latitude);
+            DbGeography geo = DbGeography.PointFromText(pointString, 4326);*/
+            wtg.place = new Place() { IdPlace = want_To_Visit.Id, Address = want_To_Visit.Address /*Position = geo*/ };
+            wtg.person = user;
+            db.Want_To_Visit.Add(wtg);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = want_To_Visit.IdWantToVisit }, want_To_Visit);
+            return Created("api/Want_To_Visit", wtg);
         }
 
         // DELETE: api/Want_To_Visit/5

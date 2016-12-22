@@ -249,4 +249,11 @@ namespace GuidMeWebApp.Models
         [Timestamp]
         public byte[] RowVersion { get; set; }
     }
+
+    public class Want_To_VisitCreateModel
+    {
+        public string Id { get; set; }
+        public String Address { get; set; }
+        public string IdPlace { get; set; }
+    }
 }
