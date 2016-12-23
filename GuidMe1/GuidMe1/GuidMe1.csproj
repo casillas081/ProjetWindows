@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dao\GuideService.cs" />
     <Compile Include="Dao\TokenGlobal.cs" />
     <Compile Include="Error\ApplicationError.cs" />
     <Compile Include="Model\Avatar.cs" />

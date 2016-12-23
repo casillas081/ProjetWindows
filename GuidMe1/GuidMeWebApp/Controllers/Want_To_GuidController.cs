@@ -20,9 +20,9 @@ namespace GuidMeWebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Want_To_Guid
-        public IQueryable<Want_To_Guid> GetWant_To_Guid()
+        public IEnumerable<Want_To_Guid> GetWant_To_Guid()
         {
-            return db.Want_To_Guid;
+            return db.Want_To_Guid.ToList();
         }
 
         // GET: api/Want_To_Guid/5

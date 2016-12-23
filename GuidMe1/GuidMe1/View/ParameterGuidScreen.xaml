@@ -15,6 +15,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -43,10 +44,11 @@
             </ComboBox>
         </StackPanel>
         <TextBlock Text="Lieu sélectionnés :" Grid.Row="3" HorizontalAlignment="Center" Foreground="Black"/>
-        <ListView Grid.Row="5" HorizontalAlignment="Center">
+        <ListView Grid.Row="4" HorizontalAlignment="Center" ItemsSource="{Binding ListWantDoVisit}">
             <ListViewItem>
-                <TextBlock Text="Henallux-IESN" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding ListDoVisit}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </ListViewItem>
         </ListView>
+        <Button Grid.Row="5" Content="Valider" Name="Inscrire" HorizontalAlignment="Center" Command="{Binding RefreshScreen}"/>
     </Grid>
 </Page>

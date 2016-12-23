@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using GuidMe1.Dao;
 using GuidMe1.Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace GuidMe1.ViewModel
 {
     public class ParameterGuidScreenViewModel : ViewModelBase
     {
+
         public ObservableCollection<String> MyPlaceDoVisit { get; set; }
 
         private String _placeDoVisit;
@@ -25,6 +27,18 @@ namespace GuidMe1.ViewModel
             {
                 _placeDoVisit = value;
                 RaisePropertyChanged("PlaceDoVisit");
+            }
+        }
+
+        public ObservableCollection<String> ListWantDoVisit { get; set; }
+
+        private String _listDoVisit;
+
+        public String ListDoVisit
+        {
+            get { return _listDoVisit; }
+            set { _listDoVisit = value;
+                RaisePropertyChanged("ListDoVisit");
             }
         }
 
@@ -42,6 +56,20 @@ namespace GuidMe1.ViewModel
         
 
         public ObservableCollection<TranslationPlace> thePlaceDoVisit { get; set; }
+        public ObservableCollection<TranslationPlace> myListPlaceDoVisit { get; set; }
+
+        public ObservableCollection<Want_To_Guid> CompatilityUser { get; set; }
+        private ICommand _refreshScreen;
+
+        public ICommand RefreshScreen
+        {
+            get
+            {
+                if (_refreshScreen == null)
+                    _refreshScreen = new RelayCommand(() => DoRefreshScreen());
+                return _refreshScreen;
+            }
+        }
 
 
         private INavigationService _navigationService;
@@ -50,11 +78,13 @@ namespace GuidMe1.ViewModel
         {
             _navigationService = navigationService;
             MyPlaceDoVisit = new ObservableCollection<string>();
+            ListWantDoVisit = new ObservableCollection<string>();
             InitializeAsync();
         }
 
         public async Task InitializeAsync()
         {
+            var guideService = new GuideService();
             var service = new DataService();
             var myPlaceDoVisit = await service.GetPlace(); // Appel au service
             thePlaceDoVisit = new ObservableCollection<TranslationPlace>(myPlaceDoVisit);
@@ -62,6 +92,31 @@ namespace GuidMe1.ViewModel
             {
                 MyPlaceDoVisit.Add(placed.TranslationNamePlace);
             }
+
+            CurrentUser = await service.GetPerson();
+            var service2 = new GuideService();
+            var wantDoVisit = await service2.GetWantDoVisit();
+            foreach(Want_To_Guid wtg in wantDoVisit)
+            {
+                if (wtg.Person.Email.Equals(CurrentUser.Email))
+                {
+                    CompatilityUser = new ObservableCollection<Want_To_Guid>(wantDoVisit);
+                }
+            }
+
+            var myListPlaceDoVisited = await service.GetPlace();
+            myListPlaceDoVisit = new ObservableCollection<TranslationPlace>(myListPlaceDoVisited);
+            foreach (Want_To_Guid wantToGuide in CompatilityUser)
+            {
+                foreach(TranslationPlace placeded in myListPlaceDoVisit)
+                {
+                    if (wantToGuide.Place.IdPlace.Equals(placeded.Place.IdPlace))
+                    {
+                        ListWantDoVisit.Add(placeded.TranslationNamePlace);
+                    }
+                }
+            }
+
         }
 
         private ICommand _goToGuidScreenCommand;
@@ -75,6 +130,9 @@ namespace GuidMe1.ViewModel
                 return _goToGuidScreenCommand;
             }
         }
+
+        private void DoRefreshScreen() { 
+}
 
         private void GoToGuidScreen()
         {
