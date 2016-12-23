@@ -11,8 +11,8 @@ namespace GuidMe1.Model
         public string Id { get; set; }
         public String Address { get; set; }
         public string IdPlace { get; set; }
-                                           /* public double Latitude { get; set; }
-                                            public double Longitude { get; set; }*/
+        /* public double Latitude { get; set; }
+         public double Longitude { get; set; }*/
 
         public Want_To_GuidCreateModel(string id, String adr, string idPlace/*, double lat, double longitude*/)
         {

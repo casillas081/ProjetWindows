@@ -35,13 +35,15 @@
         <TextBlock Text="Paramètres" HorizontalAlignment="Center" Foreground="Black" FontSize="40" Grid.Row="0"/>
 
         <TextBlock Text="Ajouter un lieu à mes " HorizontalAlignment="Center" Foreground="Black" Grid.Row="1"/>
-        <ComboBox Grid.Row="2" HorizontalAlignment="Center">
-            <ComboBoxItem>
-                <TextBlock Text="Henallux-IESN" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </ComboBoxItem>
-        </ComboBox>
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Lieux connus :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox HorizontalAlignment="Center"
+                          SelectedItem="{Binding PlaceDoVisit, Mode=TwoWay}"
+                          ItemsSource="{Binding MyPlaceDoVisit, Mode=TwoWay}">
+            </ComboBox>
+        </StackPanel>
         <TextBlock Text="Lieu sélectionnés :" Grid.Row="3" HorizontalAlignment="Center" Foreground="Black"/>
-        <ListView Grid.Row="4" HorizontalAlignment="Center">
+        <ListView Grid.Row="5" HorizontalAlignment="Center">
             <ListViewItem>
                 <TextBlock Text="Henallux-IESN" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </ListViewItem>

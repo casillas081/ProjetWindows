@@ -74,7 +74,7 @@ namespace GuidMeWebApp.Controllers
         }
 
         // POST: api/Want_To_Guid
-        [ResponseType(typeof(Want_To_Guid))]
+         [ResponseType(typeof(Want_To_Guid))]
         public async Task<IHttpActionResult> PostWant_To_Guid(Want_To_GuidCreateModel want_To_Guid)
         {
             if (!ModelState.IsValid)
@@ -87,13 +87,15 @@ namespace GuidMeWebApp.Controllers
             Want_To_Guid wtg = new Want_To_Guid();
             /*var pointString = string.Format("POINT({0} {1})", want_To_Guid.Position.Longitude, want_To_Guid.Position.Latitude);
             DbGeography geo = DbGeography.PointFromText(pointString, 4326);*/
-            wtg.Place = new Place() {IdPlace = want_To_Guid.Id, Address = want_To_Guid.Address /*Position = geo*/ };
+            //wtg.Place = new Place() {IdPlace = want_To_Guid.IdPlace, Address = want_To_Guid.Address /*Position = geo*/ };
+            var machin = db.Places.First(e => e.IdPlace.Equals(want_To_Guid.IdPlace));
+            wtg.Place = machin;
             wtg.Person = user;
             db.Want_To_Guid.Add(wtg);
             await db.SaveChangesAsync();
 
             return Created("api/Want_To_Guid", wtg);
-        }
+}
 
         // DELETE: api/Want_To_Guid/5
         [ResponseType(typeof(Want_To_Guid))]

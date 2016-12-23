@@ -40,7 +40,31 @@ namespace GuidMeWebApp.Models.Test
 
             };
 
+
             context.TranslationPlaces.Add(translationPlace);
+
+            context.SaveChanges();
+
+            Place placed1 = new Place()
+            {
+                IdPlace = "namur0002",
+
+                Address = "Rue du Collège, 5000 Namur",
+            };
+            context.Places.Add(placed1);
+            context.SaveChanges();
+
+            TranslationPlace translationPlace1 = new TranslationPlace()
+            {
+                IdTranslationPlace = 2,
+                TranslationNamePlace = "Église Saint-Loup",
+                CodeLanguage = lgPerson,
+                Place = placed1,
+
+            };
+
+
+            context.TranslationPlaces.Add(translationPlace1);
 
             context.SaveChanges();
         }

@@ -16,7 +16,7 @@ namespace GuidMeWebApp
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            //Database.SetInitializer(new DbInitializer());
+            Database.SetInitializer(new DbInitializer());
         }
     }
 }

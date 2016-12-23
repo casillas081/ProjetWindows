@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using GuidMeWebApp.Models;
 using System.Security.Claims;
+using System.Diagnostics;
 
 namespace GuidMeWebApp.Controllers
 {
@@ -76,7 +77,7 @@ namespace GuidMeWebApp.Controllers
         [ResponseType(typeof(Want_To_Visit))]
         public async Task<IHttpActionResult> PostWant_To_Visit(Want_To_VisitCreateModel want_To_Visit)
         {
-            f(!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -86,8 +87,10 @@ namespace GuidMeWebApp.Controllers
             Want_To_Visit wtg = new Want_To_Visit();
             /*var pointString = string.Format("POINT({0} {1})", want_To_Guid.Position.Longitude, want_To_Guid.Position.Latitude);
             DbGeography geo = DbGeography.PointFromText(pointString, 4326);*/
-            wtg.place = new Place() { IdPlace = want_To_Visit.Id, Address = want_To_Visit.Address /*Position = geo*/ };
-            wtg.person = user;
+            //wtg.Place = new Place() { IdPlace = want_To_Visit.IdPlace, Address = want_To_Visit.Address /*Position = geo*/ };
+            var machin = db.Places.First(e => e.IdPlace.Equals(want_To_Visit.IdPlace));
+            wtg.Place = machin;
+            wtg.Person = user;
             db.Want_To_Visit.Add(wtg);
             await db.SaveChangesAsync();
 

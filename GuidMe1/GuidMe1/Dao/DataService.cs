@@ -59,7 +59,7 @@ namespace GuidMe1.Model
                     return error;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 error.ErrorMessage = e.ToString();
                 error.IsOk = false;
@@ -73,7 +73,7 @@ namespace GuidMe1.Model
             Person returnedData = JsonConvert.DeserializeObject<Person>(json);
             return returnedData;
         }
-        
+
         public async Task<IEnumerable<TranslationPlace>> GetPlace()
         {
             var json = await pc.GetStringAsync(new Uri("http://localhost:57610/api/TranslationPlaces"));
@@ -108,7 +108,7 @@ namespace GuidMe1.Model
                     return error;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 error.ErrorMessage = e.ToString();
                 error.IsOk = false;

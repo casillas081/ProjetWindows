@@ -157,8 +157,8 @@ namespace GuidMeWebApp.Models
         /*[Required]
         public DbGeography Position { get; set; }*/
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        /*[Timestamp]
+        public byte[] RowVersion { get; set; }*/
 
     }
 
@@ -229,9 +229,9 @@ namespace GuidMeWebApp.Models
 
     public class Want_To_GuidCreateModel
     {
-        public string Id { get; set; }
+        public String Id { get; set; }
         public String Address { get; set; }
-        public string IdPlace { get; set; }
+        public String IdPlace { get; set; }
         /*public DbGeography Position { get; set; }*/
 
     }
@@ -242,9 +242,9 @@ namespace GuidMeWebApp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdWantToVisit { get; set; }
 
-        public ApplicationUser person { get; set; }
+        public ApplicationUser Person { get; set; }
 
-        public virtual Place place { get; set; }
+        public virtual Place Place { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
@@ -252,7 +252,7 @@ namespace GuidMeWebApp.Models
 
     public class Want_To_VisitCreateModel
     {
-        public string Id { get; set; }
+        public String Id { get; set; }
         public String Address { get; set; }
         public string IdPlace { get; set; }
     }

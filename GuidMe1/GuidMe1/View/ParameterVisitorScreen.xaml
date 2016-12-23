@@ -35,11 +35,14 @@
         <TextBlock Text="Paramètres" HorizontalAlignment="Center" Foreground="Black" FontSize="40" Grid.Row="0"/>
 
         <TextBlock Text="Ajouter ou supprimer des lieux souhaités" HorizontalAlignment="Center" Foreground="Black" Grid.Row="1"/>
-        <ComboBox Grid.Row="2" HorizontalAlignment="Center">
-            <ComboBoxItem>
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Lieu à visiter :" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox HorizontalAlignment="Center"
+                          ItemsSource="{Binding MyPlaceForVisit,Mode=TwoWay}"
+                          SelectedItem="{Binding PlaceForVisit,Mode=TwoWay}">
 
-            </ComboBoxItem>
-        </ComboBox>
+            </ComboBox>
+        </StackPanel>
         <TextBlock Text="Lieux souhaités :" Grid.Row="3" HorizontalAlignment="Center" Foreground="Black"/>
         <ListView Grid.Row="4" HorizontalAlignment="Center">
             <ListViewItem>

@@ -10,7 +10,7 @@ namespace GuidMe1.Model
     {
         public int IdWantToGuid { get; set; }
         public RegisterBindingModel Person { get; set; }
-        public Place Place { get; set; }
+        public virtual Place Place { get; set; }
 
         public Want_To_Guid(RegisterBindingModel p, Place pl)
         {

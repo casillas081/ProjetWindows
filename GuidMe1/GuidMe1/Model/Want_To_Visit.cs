@@ -10,6 +10,6 @@ namespace GuidMe1.Model
     {
         public int IdWantToGuid { get; set; }
         public Person Person { get; set; }
-        public Place Place { get; set; }
+        public virtual Place Place { get; set; }
     }
 }

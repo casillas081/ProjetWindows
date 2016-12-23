@@ -34,7 +34,9 @@ namespace GuidMe1.ViewModel
         public String LastName
         {
             get { return _lastName; }
-            set { _lastName = value;
+            set
+            {
+                _lastName = value;
                 RaisePropertyChanged("LastName");
             }
         }
@@ -44,8 +46,10 @@ namespace GuidMe1.ViewModel
         public bool Sex
         {
             get { return _sex; }
-            set { _sex = value;
-                RaisePropertyChanged("Sex");  
+            set
+            {
+                _sex = value;
+                RaisePropertyChanged("Sex");
             }
         }
 
@@ -54,7 +58,9 @@ namespace GuidMe1.ViewModel
         public String Email
         {
             get { return _email; }
-            set { _email = value;
+            set
+            {
+                _email = value;
                 RaisePropertyChanged("Email");
             }
         }
@@ -64,7 +70,9 @@ namespace GuidMe1.ViewModel
         public String Password
         {
             get { return _password; }
-            set { _password = value;
+            set
+            {
+                _password = value;
                 RaisePropertyChanged("Password");
             }
         }
@@ -74,7 +82,9 @@ namespace GuidMe1.ViewModel
         public String ConfirmPassword
         {
             get { return _confirmPassword; }
-            set { _confirmPassword = value;
+            set
+            {
+                _confirmPassword = value;
                 RaisePropertyChanged("ConfirmPassword");
             }
         }
@@ -88,7 +98,9 @@ namespace GuidMe1.ViewModel
         public String Nationality
         {
             get { return _nationality; }
-            set { _nationality = value;
+            set
+            {
+                _nationality = value;
                 RaisePropertyChanged("Nationality");
             }
         }
@@ -100,7 +112,9 @@ namespace GuidMe1.ViewModel
         public String PlaceForVisit
         {
             get { return _placeForVisit; }
-            set { _placeForVisit = value;
+            set
+            {
+                _placeForVisit = value;
                 RaisePropertyChanged("PlaceForVisit");
             }
         }
@@ -124,7 +138,9 @@ namespace GuidMe1.ViewModel
         public Person CurrentUser
         {
             get { return _currentUser; }
-            set { _currentUser = value;
+            set
+            {
+                _currentUser = value;
                 RaisePropertyChanged("CurrentUser");
             }
         }
@@ -137,9 +153,9 @@ namespace GuidMe1.ViewModel
         private INavigationService _navigationService;
 
         [PreferredConstructor]
-        public InscriptionScreenViewModel(INavigationService navigationService=null)
+        public InscriptionScreenViewModel(INavigationService navigationService = null)
         {
-            MyNationality = new List<String> {"Allemand", "Autrichien","Belge","Bulgare","Chyprien","Croate","Dannois","Espagnol", "Estonien", "Finlandais", "Français","Grecs", "Hongrois", "Irlandais", "Italien", "Letton","Lituanien","Luxembourgeois", "Maltais", "Néerlandais","Polonais", "Portugais", "Tchèque","Roumain","Anglais","Slovaque", "Slovène", "Suédois" };
+            MyNationality = new List<String> { "Allemand", "Autrichien", "Belge", "Bulgare", "Chyprien", "Croate", "Dannois", "Espagnol", "Estonien", "Finlandais", "Français", "Grecs", "Hongrois", "Irlandais", "Italien", "Letton", "Lituanien", "Luxembourgeois", "Maltais", "Néerlandais", "Polonais", "Portugais", "Tchèque", "Roumain", "Anglais", "Slovaque", "Slovène", "Suédois" };
             _navigationService = navigationService;
             MyPlaceForVisit = new ObservableCollection<string>();
             MyPlaceDoVisit = new ObservableCollection<string>();
@@ -166,7 +182,7 @@ namespace GuidMe1.ViewModel
 
         }
 
-// Validation du Bouton, On envoit les données du formulaire, on vérifie qu'elles sont correctes vis à vis du type de valeur dans la BD dans le service
+        // Validation du Bouton, On envoit les données du formulaire, on vérifie qu'elles sont correctes vis à vis du type de valeur dans la BD dans le service
         private ICommand _goToRoleChoiceScreenCommand;
 
         public ICommand GoToRoleChoiceScreenCommand
@@ -181,7 +197,7 @@ namespace GuidMe1.ViewModel
 
         private async void GoToRoleChoiceScreen()
         {
-            var person =  new RegisterBindingModel(Email, Password, ConfirmPassword, FirstName, LastName, Sex, Nationality);
+            var person = new RegisterBindingModel(Email, Password, ConfirmPassword, FirstName, LastName, Sex, Nationality);
             var service = new DataService();
             var error1 = await service.AddNewUser(person);
             if (error1.IsOk)
@@ -201,9 +217,9 @@ namespace GuidMe1.ViewModel
                     var placeConfirmed = await service.GetPlaceId(idPlace);
                     CurrentUser = await service.GetPerson();
                     Want_To_GuidCreateModel wantToGuid = new Want_To_GuidCreateModel(CurrentUser.Id, placeConfirmed.Address, placeConfirmed.IdPlace);
-                    
+
                     var error2 = await service.AddWantToGuide(wantToGuid);
-                    
+
                     if (error2.IsOk)
                     {
                         var idPlace1 = "";
@@ -241,22 +257,23 @@ namespace GuidMe1.ViewModel
                     dialog.ShowAsync();
                     _navigationService.NavigateTo("LogonScreen");
                 }
-                
+
             }
             else
             {
                 var dialog = new Windows.UI.Popups.MessageDialog("Status de la requête : " + error1.ErrorMessage);
                 dialog.ShowAsync();
             }
-            
-            
+
+
         }
         // Bouton Retour a logon quand on ne veut pas 
         private ICommand _goToLogonScreenCommand;
 
         public ICommand GoToLogonScreenCommand
         {
-            get {
+            get
+            {
                 if (_goToLogonScreenCommand == null)
                     _goToLogonScreenCommand = new RelayCommand(() => GoToLogonScreen());
                 return _goToLogonScreenCommand;
